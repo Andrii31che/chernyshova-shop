@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Контакты — Татьяна Чернышова</title>
+<meta name="description" content="Telegram-бот, Instagram и запись на персональный разбор с Татьяной Чернышовой.">
+<meta property="og:title" content="Контакты — Татьяна Чернышова">
+<meta property="og:description" content="Telegram-бот: тесты, запись, ответы. Instagram: разборы и кейсы из практики.">
+<meta property="og:image" content="https://andrii31che.github.io/chernyshova-shop/site/img/hero.jpg">
+<meta property="og:url" content="https://andrii31che.github.io/chernyshova-shop/site/contacts.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon.png">
+<link rel="preload" href="fonts/playfair-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="contacts">
+
+<header class="top"><div class="wrap top-in">
+  <a class="logo" data-keep-lang href="index.html">Татьяна <span>Чернышова</span></a>
+  <nav class="main">
+    <a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+    <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+    <a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+    <a class="here" data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+  </nav>
+  <div class="top-cta">
+    <button class="lang-t" id="lang-t" onclick="toggleLang()">UA</button>
+    <a class="btn sm" data-keep-lang data-i18n="nav_buy" href="courses.html#tariffs">Купить курс</a>
+    <button class="burger" onclick="openSheet()" aria-label="Меню"><i></i><i></i><i></i></button>
+  </div>
+</div></header>
+<div class="sheet" id="sheet">
+  <button class="close" onclick="closeSheet()" aria-label="Закрыть">×</button>
+  <button class="lang-t" onclick="toggleLang()">UA</button>
+  <a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+  <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+  <a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+  <a class="here" data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+</div>
+
+<section style="padding-bottom:30px">
+  <div class="wrap">
+    <div class="eyebrow rise" data-i18n="ct_eyebrow">Контакты</div>
+    <h1 class="rise d1 h1-sub" data-i18n="ct_h1">Я рядом — <em class="acc">в мессенджере</em></h1>
+    <p class="lead rise d2" style="max-width:620px; margin-top:14px" data-i18n="ct_lead">Самый быстрый способ получить ответ — Telegram-бот: тесты на дефициты, запись на разбор, вопросы по курсам и оплате.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="tariffs">
+      <a class="tariff" style="text-decoration:none; color:inherit" href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','contacts')">
+        <span class="t-name">Telegram</span>
+        <h3 style="margin-top:8px" data-i18n="ct_bot_h">Telegram-бот</h3>
+        <p class="muted" style="font-size:15px" data-i18n="ct_bot_p">Тесты, запись, ответы на вопросы</p>
+        <span style="color:var(--accent); font-weight:600">@dr_chernyshova_bot →</span>
+      </a>
+      <a class="tariff" style="text-decoration:none; color:inherit" href="https://www.instagram.com/doctor.chernyshova_spain" target="_blank" rel="noopener">
+        <span class="t-name">Instagram</span>
+        <h3 style="margin-top:8px" data-i18n="ct_ig1_h">Instagram (RU/ES)</h3>
+        <p class="muted" style="font-size:15px" data-i18n="ct_ig_p">Разборы, кейсы из практики, прямые эфиры</p>
+        <span style="color:var(--accent); font-weight:600">@doctor.chernyshova_spain →</span>
+      </a>
+      <a class="tariff" style="text-decoration:none; color:inherit" href="https://www.instagram.com/doctor.chernyshovatatiana" target="_blank" rel="noopener">
+        <span class="t-name">Instagram</span>
+        <h3 style="margin-top:8px" data-i18n="ct_ig2_h">Instagram (UA)</h3>
+        <p class="muted" style="font-size:15px" data-i18n="ct_ig_p">Разборы, кейсы из практики, прямые эфиры</p>
+        <span style="color:var(--accent); font-weight:600">@doctor.chernyshovatatiana →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap" style="text-align:center">
+    <h2 data-i18n="ct_cons_h2">Персональный разбор — €200</h2>
+    <p class="muted" style="max-width:560px; margin:0 auto 22px" data-i18n="ct_cons_p">60 минут онлайн: ваш тип старения, разбор ухода, какие анализы сдать. На руки — персональный протокол.</p>
+    <a class="btn" data-i18n="ct_cons_btn" href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','contacts_consult')">Записаться через бот</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="f-logo">Татьяна Чернышова</div>
+        <p style="margin-top:8px" data-i18n="f_note">Оплата проходит через защищённую страницу WayForPay. Курсы не заменяют консультацию вашего лечащего врача.</p>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_nav">Разделы</b>
+        <ul>
+          <li><a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a></li>
+          <li><a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a></li>
+          <li><a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a></li>
+          <li><a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_soc">Соцсети</b>
+        <ul>
+          <li><a href="https://www.instagram.com/doctor.chernyshova_spain" target="_blank" rel="noopener">Instagram RU/ES</a></li>
+          <li><a href="https://www.instagram.com/doctor.chernyshovatatiana" target="_blank" rel="noopener">Instagram UA</a></li>
+          <li><a href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','footer')">Telegram-бот</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>Татьяна Чернышова · врач-невролог, косметолог · © 2026</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кабинет — Татьяна Чернышова</title>
+<meta name="description" content="Кабинет ученицы: прогресс по дням, урок дня и практика. Открывается после покупки курса.">
+<meta property="og:title" content="Кабинет ученицы — Татьяна Чернышова">
+<meta property="og:description" content="Прогресс по дням, урок дня и практика — всё в одном месте.">
+<meta property="og:image" content="https://andrii31che.github.io/chernyshova-shop/site/img/hero.jpg">
+<meta property="og:url" content="https://andrii31che.github.io/chernyshova-shop/site/cabinet.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon.png">
+<link rel="preload" href="fonts/playfair-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="cabinet">
+
+<header class="top"><div class="wrap top-in">
+  <a class="logo" data-keep-lang href="index.html">Татьяна <span>Чернышова</span></a>
+  <nav class="main">
+    <a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+    <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+    <a class="here" data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+    <a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+  </nav>
+  <div class="top-cta">
+    <button class="lang-t" id="lang-t" onclick="toggleLang()">UA</button>
+    <a class="btn sm" data-keep-lang data-i18n="nav_buy" href="courses.html#tariffs">Купить курс</a>
+    <button class="burger" onclick="openSheet()" aria-label="Меню"><i></i><i></i><i></i></button>
+  </div>
+</div></header>
+<div class="sheet" id="sheet">
+  <button class="close" onclick="closeSheet()" aria-label="Закрыть">×</button>
+  <button class="lang-t" onclick="toggleLang()">UA</button>
+  <a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+  <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+  <a class="here" data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+  <a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+</div>
+
+<section style="padding-bottom:30px">
+  <div class="wrap">
+    <div class="eyebrow rise" data-i18n="k_eyebrow">Кабинет ученицы</div>
+    <h1 class="rise d1 h1-sub" data-i18n="k_h1">Ваш курс — <em class="acc">в одном месте</em></h1>
+    <p class="lead rise d2" style="max-width:620px; margin-top:14px" data-i18n="k_lead">Кабинет открывается после покупки курса: доступ приходит в Telegram. Ниже — демо: так будет выглядеть ваш прогресс.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap narrow">
+    <div class="cab-shell">
+      <div class="cab-bar"><span data-i18n="k_bar">Демо · Молодость изнутри</span><span id="cab-pct">17%</span></div>
+      <div class="cab-body">
+        <div class="prog-label"><span id="cab-day" data-i18n="k_day">День 5 из 30</span></div>
+        <div class="prog"><i id="cab-bar-i" style="width:17%"></i></div>
+        <ul class="day-list" id="day-list">
+          <li data-day="1"><span class="n">День 1</span><span data-i18n="k_l1">Сон: фундамент восстановления</span><span class="st">отметить</span></li>
+          <li data-day="2"><span class="n">День 2</span><span data-i18n="k_l2">Дыхание, которое снимает напряжение</span><span class="st">отметить</span></li>
+          <li data-day="3"><span class="n">День 3</span><span data-i18n="k_l3">Питание: первые замены</span><span class="st">отметить</span></li>
+          <li data-day="4"><span class="n">День 4</span><span data-i18n="k_l4">Уход: утренний протокол</span><span class="st">отметить</span></li>
+          <li data-day="5"><span class="n">День 5</span><span data-i18n="k_l5">Дыхание и лимфа</span><span class="st">отметить</span></li>
+          <li class="lock"><span class="n">День 6</span><span data-i18n="k_lock">откроется завтра</span><span class="st" data-i18n="k_lock_st">закрыто</span></li>
+        </ul>
+        <div class="hw"><b data-i18n="k_hw_b">Практика дня</b><span data-i18n="k_hw">3 вопроса для себя: что я заметила сегодня? что далось легко? что возьму с собой на завтра?</span></div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:16px; font-size:14.5px" data-i18n="k_demo_note">Это демо-режим: отмечайте дни и смотрите, как растёт прогресс. В реальном кабинете уроки открываются по одному в день.</p>
+    <p style="margin-top:26px"><b data-i18n="k_q_h">Вопросы по ходу курса</b><br><span class="muted" data-i18n="k_q_p">На Базовом и Полном тарифах вы задаёте вопросы в группе курса — я отвечаю лично.</span></p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap" style="text-align:center">
+    <h2 data-i18n="k_buy_h2">Кабинет открывается вместе с курсом</h2>
+    <a class="btn" data-keep-lang data-i18n="k_buy_btn" href="courses.html#tariffs">Выбрать тариф</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="f-logo">Татьяна Чернышова</div>
+        <p style="margin-top:8px" data-i18n="f_note">Оплата проходит через защищённую страницу WayForPay. Курсы не заменяют консультацию вашего лечащего врача.</p>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_nav">Разделы</b>
+        <ul>
+          <li><a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a></li>
+          <li><a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a></li>
+          <li><a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a></li>
+          <li><a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_soc">Соцсети</b>
+        <ul>
+          <li><a href="https://www.instagram.com/doctor.chernyshova_spain" target="_blank" rel="noopener">Instagram RU/ES</a></li>
+          <li><a href="https://www.instagram.com/doctor.chernyshovatatiana" target="_blank" rel="noopener">Instagram UA</a></li>
+          <li><a href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','footer')">Telegram-бот</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>Татьяна Чернышова · врач-невролог, косметолог · © 2026</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

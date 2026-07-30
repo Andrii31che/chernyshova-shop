@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Курсы — Татьяна Чернышова</title>
+<meta name="description" content="Курс «Молодость изнутри: 30 дней» и точечные программы: ферритин, кожа зимой, соцсети для эксперта.">
+<meta property="og:title" content="Курсы Татьяны Чернышовой">
+<meta property="og:description" content="«Молодость изнутри: 30 дней» — протоколы из клинической практики. От €10.">
+<meta property="og:image" content="https://andrii31che.github.io/chernyshova-shop/site/img/hero.jpg">
+<meta property="og:url" content="https://andrii31che.github.io/chernyshova-shop/site/courses.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon.png">
+<link rel="preload" href="fonts/playfair-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="courses">
+
+<header class="top"><div class="wrap top-in">
+  <a class="logo" data-keep-lang href="index.html">Татьяна <span>Чернышова</span></a>
+  <nav class="main">
+    <a class="here" data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+    <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+    <a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+    <a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+  </nav>
+  <div class="top-cta">
+    <button class="lang-t" id="lang-t" onclick="toggleLang()">UA</button>
+    <a class="btn sm" data-i18n="nav_buy" href="#tariffs">Купить курс</a>
+    <button class="burger" onclick="openSheet()" aria-label="Меню"><i></i><i></i><i></i></button>
+  </div>
+</div></header>
+<div class="sheet" id="sheet">
+  <button class="close" onclick="closeSheet()" aria-label="Закрыть">×</button>
+  <button class="lang-t" onclick="toggleLang()">UA</button>
+  <a class="here" data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
+  <a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a>
+  <a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+  <a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
+</div>
+
+<section id="tariffs" style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="eyebrow rise" data-i18n="fc_eyebrow">Мой главный курс</div>
+    <h1 class="rise d1 h1-sub" data-i18n="c_fl_h2">Молодость изнутри: 30 дней</h1>
+    <p class="rise d2" style="max-width:640px; margin-top:14px" data-i18n="c_fl_p">30 уроков — один в день. Сон, дыхание, питание, уход: протоколы из моей клинической практики, собранные в систему. Уроки открываются по одному в день — от вашей даты старта.</p>
+    <div class="tariffs">
+      <div class="tariff">
+        <span class="t-name"><span data-i18n="c_t1">Пробный</span> · <span data-i18n="c_t1_d">7 дней</span></span>
+        <div class="t-price">€10</div>
+        <ul>
+          <li data-i18n="c_t1_f1">7 первых уроков</li>
+          <li data-i18n="c_t1_f2">посмотрите формат, прежде чем решать</li>
+        </ul>
+        <button class="btn ghost block" onclick="payFlagship('trial')" data-i18n="c_t1_btn">Начать с пробного</button>
+      </div>
+      <div class="tariff featured">
+        <span class="t-badge" data-i18n="c_badge">Рекомендую этот</span>
+        <span class="t-name"><span data-i18n="c_t2">Базовый</span> · <span data-i18n="c_t2_d">30 дней</span></span>
+        <div class="t-price">€100</div>
+        <ul>
+          <li data-i18n="c_t2_f1">все 30 уроков</li>
+          <li data-i18n="c_t2_f2">мои личные ответы в группе курса</li>
+        </ul>
+        <button class="btn block" onclick="payFlagship('base')" data-i18n="c_t2_btn">Выбрать Базовый</button>
+      </div>
+      <div class="tariff">
+        <span class="t-name"><span data-i18n="c_t3">Полный</span> · <span data-i18n="c_t3_d">30 дней</span></span>
+        <div class="t-price">€250</div>
+        <ul>
+          <li data-i18n="c_t3_f1">всё, что в Базовом</li>
+          <li data-i18n="c_t3_f2">консультация со мной в начале</li>
+          <li data-i18n="c_t3_f3">консультация в конце + протокол дальше</li>
+        </ul>
+        <button class="btn ghost block" onclick="payFlagship('full')" data-i18n="c_t3_btn">Выбрать Полный</button>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:20px; font-size:15px; max-width:640px" data-i18n="c_anchor">Для сравнения: индивидуальный разбор со мной стоит €200 за час. В Базовом тарифе — та же система, разложенная по дням на месяц.</p>
+  </div>
+</section>
+
+<section class="tone">
+  <div class="wrap">
+    <h2 data-i18n="c_more_h2">Точечные программы</h2>
+    <p class="muted" style="margin-bottom:26px" data-i18n="c_more_p">Наведите на карточку (или коснитесь), чтобы увидеть, что внутри.</p>
+    <div class="grid-2" id="mini-courses"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="f-logo">Татьяна Чернышова</div>
+        <p style="margin-top:8px" data-i18n="f_note">Оплата проходит через защищённую страницу WayForPay. Курсы не заменяют консультацию вашего лечащего врача.</p>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_nav">Разделы</b>
+        <ul>
+          <li><a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a></li>
+          <li><a data-keep-lang data-i18n="nav_about" href="about.html">О Татьяне</a></li>
+          <li><a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a></li>
+          <li><a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <b class="eyebrow eyebrow--dim" data-i18n="f_soc">Соцсети</b>
+        <ul>
+          <li><a href="https://www.instagram.com/doctor.chernyshova_spain" target="_blank" rel="noopener">Instagram RU/ES</a></li>
+          <li><a href="https://www.instagram.com/doctor.chernyshovatatiana" target="_blank" rel="noopener">Instagram UA</a></li>
+          <li><a href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','footer')">Telegram-бот</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>Татьяна Чернышова · врач-невролог, косметолог · © 2026</p>
+  </div>
+</footer>
+
+<div class="modal-bg" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsell-h">
+  <div class="modal">
+    <h3 id="upsell-h" data-i18n="up_h">Усильте результат курса</h3>
+    <p data-i18n="up_p">Усталость и выпадение волос часто связаны с низким ферритином. Курс «Ферритин: вернуть энергию» (5 уроков, €16) разбирает эту тему глубже.</p>
+    <button class="btn block" id="up-continue" data-i18n="up_go">Продолжить к оплате курса →</button>
+    <button class="btn ghost block" onclick="openPay(PAY.ferritin,'ferritin_upsell')" data-i18n="up_add">Открыть оплату «Ферритина» — €16</button>
+    <button class="skip" id="up-skip" data-i18n="up_skip">Только курс, спасибо</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+/* точечные программы: флип-карточки; данные = витрина COURSES (цены сверены 2026-07-30, ферритин €16 по чекауту) */
+const MINI = {
+  ru: [
+    { t: "Ферритин: вернуть энергию", p: "€16", d: "Усталость, выпадение волос, бледность — часто скрытый дефицит ферритина.",
+      back: ["какие анализы сдать — точные цифры", "почему БАДы железа часто не работают", "как поднять и удержать ферритин", "5 уроков + чек-лист анализов"], pay: "ferritin" },
+    { t: "Уход за кожей зимой", p: "€30", d: "Сухость, шелушение, ранние морщины зимой — это физиология. Восстановление барьера за 4 недели, дома.",
+      back: ["какие компоненты работают, а какие вредят", "что есть и пить, чтобы кожа не обезвоживалась", "5 уроков + протокол ухода"], pay: null },
+    { t: "Социальные сети для эксперта", p: "цена на стр. оплаты", d: "Как расти в Instagram, TikTok и Telegram — без танцев и выгорания. Для врачей, косметологов, экспертов.",
+      back: ["как выбрать платформу под экспертизу", "структура контента, который читают", "монетизация без агрессивных продаж"], pay: "social" },
+  ],
+  ua: [
+    { t: "Феритин: повернути енергію", p: "€16", d: "Втома, випадіння волосся, блідість — часто прихований дефіцит феритину.",
+      back: ["які аналізи здати — точні цифри", "чому БАДи заліза часто не працюють", "як підняти й утримати феритин", "5 уроків + чек-лист аналізів"], pay: "ferritin" },
+    { t: "Фасціальний біль", p: "1000 грн", d: "Коли болить «усе тіло», а аналізи в нормі. 11 уроків: вправи, валик, дихання.",
+      back: ["вправи під кожну зону скутості", "самомасаж валиком", "дихання, що знімає напругу"], pay: "fascia" },
+    { t: "Книга «Склянка води»", p: "ціна на стор. оплати", d: "Про лімфатичну систему, водний баланс і просту систему підтримки тіла.",
+      back: ["чому лімфа — головна система детоксу", "техніки запуску лімфи на 5 хвилин на день", "зв'язок води зі шкірою та енергією"], pay: "book" },
+    { t: "Соціальні мережі для експерта", p: "ціна на стор. оплати", d: "Як зростати в Instagram, TikTok і Telegram — без танців і вигорання.",
+      back: ["як обрати платформу під експертизу", "структура контенту, який читають", "монетизація без агресивних продажів"], pay: "social" },
+  ],
+};
+function renderMini() {
+  const grid = document.getElementById("mini-courses");
+  grid.replaceChildren();
+  const t = lang === "ua"
+    ? { buy: UA.c_buy, inbot: UA.c_inbot, flip: UA.c_flip }
+    : { buy: "Оплатить", inbot: "Узнать в боте", flip: "что внутри →" };
+  MINI[lang].forEach(function (c) {
+    const flip = document.createElement("div"); flip.className = "flip";
+    const inn = document.createElement("div"); inn.className = "flip-in";
+    const front = document.createElement("div"); front.className = "face front";
+    const tr = document.createElement("div"); tr.className = "top-row";
+    const h = document.createElement("h3"); h.textContent = c.t;
+    const pr = document.createElement("span"); pr.className = "price" + (c.p.length > 12 ? " price--note" : ""); pr.textContent = c.p;
+    tr.append(h, pr);
+    const d = document.createElement("p"); d.className = "desc"; d.textContent = c.d;
+    const hint = document.createElement("span"); hint.className = "hint-flip"; hint.textContent = t.flip;
+    front.append(tr, d, hint);
+    const back = document.createElement("div"); back.className = "face back";
+    const bh = document.createElement("h3"); bh.textContent = c.t;
+    const ul = document.createElement("ul");
+    c.back.forEach(function (x) { const li = document.createElement("li"); li.textContent = x; ul.append(li); });
+    back.append(bh, ul);
+    if (c.pay) {
+      const b = document.createElement("button"); b.className = "btn sm"; b.textContent = t.buy + " →";
+      b.addEventListener("click", function () { openPay(PAY[c.pay], c.pay); });
+      back.append(b);
+    } else {
+      const a = document.createElement("a"); a.className = "btn ghost sm on-dark"; a.textContent = t.inbot + " →";
+      a.href = BOT_URL; a.target = "_blank"; a.rel = "noopener";
+      a.addEventListener("click", function () { track("site_bot_click", "winter"); });
+      back.append(a);
+    }
+    inn.append(front, back);
+    flip.append(inn);
+    grid.append(flip);
+  });
+  document.querySelectorAll("#mini-courses .flip").forEach(function (f) {
+    f.addEventListener("click", function (e) {
+      if (e.target.closest("a,button")) return;
+      f.classList.toggle("tapped");
+    });
+  });
+}
+renderMini();
+const _origToggle = toggleLang;
+toggleLang = function () { _origToggle(); renderMini(); };
+</script>
+</body>
+</html>
