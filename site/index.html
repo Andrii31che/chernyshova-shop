@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Татьяна Чернышова — врач anti-age медицины</title>
+<meta name="description" content="Врач-невролог и косметолог, 20 лет практики. Курс «Молодость изнутри: 30 дней», работа с причинами по анализам.">
+<meta property="og:title" content="Татьяна Чернышова — врач anti-age медицины">
+<meta property="og:description" content="Анализы не врут. Курс «Молодость изнутри: 30 дней» — протоколы из клинической практики.">
+<meta property="og:image" content="https://andrii31che.github.io/chernyshova-shop/site/img/hero.jpg">
+<meta property="og:url" content="https://andrii31che.github.io/chernyshova-shop/site/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon.png">
+<style>
+  :root {
+    --bg: #faf6ef;
+    --card: #ffffff;
+    --ink: #2b2926;
+    --hint: #6e6759;
+    --accent: #a83232;
+    --accent-dark: #8c2626;
+    --soft: #f3e3e0;
+    --norm: #4c7a5e;
+    --line: #e7ddcd;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    font-size: 16.5px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 52px 0; }
+  section:nth-of-type(even) { background: var(--card); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: .1px; }
+  h2 { font-size: clamp(26px, 5.4vw, 34px); line-height: 1.18; margin-bottom: 16px; }
+  h3 { font-size: 19px; margin-bottom: 8px; }
+  p  { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  .muted { color: var(--hint); }
+
+  /* ── language switch ── */
+  .lang {
+    position: absolute; top: 14px; right: 16px; z-index: 5;
+    display: flex; gap: 6px;
+  }
+  .lang button {
+    font-family: var(--mono); font-size: 13px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.45); background: rgba(43,41,38,.38);
+    color: #fff; border-radius: 18px; padding: 9px 14px;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .lang button.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  /* ── hero ── */
+  .hero { position: relative; padding: 0 0 44px; }
+  .hero-photo { position: relative; height: 62vw; max-height: 430px; min-height: 300px; overflow: hidden; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; transform: scale(1.32); transform-origin: 50% 14%; }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(250,246,239,0) 55%, var(--bg) 98%);
+  }
+  .hero-text { margin-top: -30px; position: relative; }
+  .hero h1 {
+    font-size: clamp(34px, 8.5vw, 52px); line-height: 1.08; margin: 10px 0 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .lead { font-size: 17.5px; max-width: 560px; }
+
+  /* ── buttons ── */
+  .btn {
+    display: inline-block; text-decoration: none; text-align: center; cursor: pointer;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 16px;
+    font-family: var(--sans);
+    padding: 14px 26px; border-radius: 12px; border: none;
+    transition: background .15s ease;
+  }
+  .btn:hover { background: var(--accent-dark); }
+  .btn.ghost {
+    background: transparent; color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn.block { display: block; width: 100%; }
+  .btn:focus-visible, .lang button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--accent); outline-offset: 2px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+  /* ── бланк анализов (signature) ── */
+  .blank {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 18px 14px; font-family: var(--mono); font-size: 13.5px;
+    box-shadow: 0 2px 10px rgba(43,41,38,.06);
+  }
+  .blank-head {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--hint); border-bottom: 1px dashed var(--line);
+    padding-bottom: 10px; margin-bottom: 4px;
+  }
+  .blank-row {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 9px 0; border-bottom: 1px dashed var(--line);
+  }
+  .blank-row:last-child { border-bottom: none; }
+  .blank-row .name { flex: 1; }
+  .blank-row .val { font-weight: 700; white-space: nowrap; }
+  .blank-row .ref { color: var(--hint); font-size: 13px; white-space: nowrap; }
+  .val.low { color: var(--accent); }
+  .val.ok  { color: var(--norm); }
+
+  /* ── about ── */
+  .about-photo { border-radius: 14px; overflow: hidden; margin: 22px 0; }
+  .about-photo img { width: 100%; height: auto; }
+  .fact-list { list-style: none; margin-top: 18px; }
+  .fact-list li {
+    display: flex; gap: 12px; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px dashed var(--line);
+    font-size: 15.5px;
+  }
+  .fact-list li:last-child { border-bottom: none; }
+  .fact-list .m { font-family: var(--mono); font-size: 12px; color: var(--accent); white-space: nowrap; }
+
+  /* ── flagship course ── */
+  .quote {
+    font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.4;
+    border-left: 3px solid var(--accent); padding-left: 16px; margin: 22px 0;
+  }
+  .fit { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 22px 0; }
+  @media (min-width: 560px) { .fit { grid-template-columns: 1fr 1fr; } }
+  .fit .col { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .fit h3 { font-family: var(--sans); font-size: 14px; font-weight: 700; }
+  .fit ul { list-style: none; margin-top: 8px; }
+  .fit li { padding: 5px 0 5px 24px; position: relative; font-size: 15px; }
+  .fit .yes li::before { content: "✓"; position: absolute; left: 0; color: var(--norm); font-weight: 700; }
+  .fit .no li::before  { content: "✕"; position: absolute; left: 0; color: var(--hint); }
+
+  .tariffs { display: grid; gap: 14px; margin-top: 26px; }
+  .tariff {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px; position: relative;
+  }
+  .tariff.featured {
+    border: 2px solid var(--accent); box-shadow: 0 6px 22px rgba(168,50,50,.12);
+    background: linear-gradient(180deg, #fff, #fdf1ee); padding: 26px 20px;
+  }
+  .tariff.featured .price { font-size: 34px; }
+  .tariff:not(.featured) .price { font-size: 22px; }
+  .tariff .badge {
+    position: absolute; top: -11px; left: 18px;
+    background: var(--accent); color: #fff; font-family: var(--mono);
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 10px;
+  }
+  .tariff .t-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .tariff .price { font-family: var(--serif); font-size: 28px; font-weight: 700; }
+  .tariff ul { list-style: none; margin: 12px 0 16px; }
+  .tariff li { padding: 4px 0 4px 22px; position: relative; font-size: 15px; }
+  .tariff li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  /* ── cabinet mockup ── */
+  .cab {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px; margin-top: 22px; box-shadow: 0 2px 10px rgba(43,41,38,.06);
+  }
+  .cab .m-badge {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--hint);
+    border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px;
+    display: inline-block; margin-bottom: 14px;
+  }
+  .prog-label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12.5px; margin-bottom: 8px; }
+  .prog { height: 8px; background: var(--soft); border-radius: 6px; overflow: hidden; }
+  .prog i { display: block; height: 100%; width: 17%; background: var(--accent); border-radius: 6px; }
+  .cab .lesson { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
+  .cab .lesson h3 { font-size: 17px; }
+  .cab .hw { background: var(--soft); border-radius: 12px; padding: 14px 16px; margin-top: 14px; font-size: 15px; }
+  .cab .hw b { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+
+  /* ── catalog ── */
+  .cards { display: grid; gap: 14px; margin-top: 24px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+  }
+  .card .top { display: flex; align-items: baseline; gap: 10px; }
+  .card .emoji { font-size: 24px; }
+  .card h3 { flex: 1; }
+  .card .price { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .card .desc { color: var(--hint); font-size: 15.5px; margin: 8px 0 14px; }
+  .card .btn { font-size: 15px; padding: 11px 20px; }
+
+  /* ── FAQ ── */
+  .faq details {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 18px; margin-bottom: 10px;
+  }
+  .faq summary { cursor: pointer; font-weight: 600; list-style: none; position: relative; padding-right: 26px; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 0; font-family: var(--mono); color: var(--accent); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details p { margin-top: 10px; font-size: 15px; }
+
+  /* ── final / footer ── */
+  .final { text-align: center; }
+  .final .anchor-line { font-family: var(--serif); font-style: italic; font-size: 21px; margin-bottom: 18px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 46px; font-size: 14.5px; color: var(--hint); }
+  footer a { color: var(--hint); }
+  footer .links { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+
+  /* ── upsell modal ── */
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(43,41,38,.5);
+    display: none; align-items: flex-end; justify-content: center; z-index: 50; padding: 16px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--card); border-radius: 18px; padding: 24px 20px;
+    max-width: 440px; width: 100%;
+  }
+  .modal h3 { font-size: 20px; margin-bottom: 10px; }
+  .modal p { font-size: 15px; }
+  .modal .btn { margin-top: 10px; }
+  .modal .skip {
+    display: block; text-align: center; margin-top: 12px; background: none; border: none;
+    color: var(--hint); font-size: 14px; cursor: pointer; width: 100%;
+  }
+  @media (min-width: 560px) { .modal-bg { align-items: center; } }
+
+  /* ── десктоп ── */
+  @media (min-width: 900px) {
+    section { padding: 84px 0; }
+    .wrap { max-width: 1040px; }
+    .wrap > p, .lead { max-width: 660px; }
+    .quote, .fact-list, .about-photo, .cab, .blank { max-width: 720px; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+            max-width: 1120px; margin: 0 auto; padding: 56px 20px 64px; }
+    .hero-photo { order: 2; height: 500px; max-height: none; border-radius: 18px; }
+    .hero-photo img { transform: none; object-position: 50% 30%; }
+    .hero-photo::after { background: none; }
+    .hero-text { order: 1; margin-top: 0; }
+    .tariffs { grid-template-columns: repeat(3, 1fr); align-items: start; }
+    .tariff.featured { transform: scale(1.03); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* мягкое появление при загрузке; контент никогда не остаётся скрытым */
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .hero-text, .hero-photo { animation: rise .6s ease both; }
+  .hero-text { animation-delay: .12s; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-text, .hero-photo { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang">
+  <button id="lang-ru" onclick="setLang('ru')">RU</button>
+  <button id="lang-ua" onclick="setLang('ua')">UA</button>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-photo"><img src="img/hero.jpg" alt="Татьяна Чернышова, врач" fetchpriority="high"></div>
+  <div class="wrap hero-text">
+    <div class="eyebrow" data-i18n="hero_eyebrow">Врач-невролог · косметолог</div>
+    <h1 data-i18n="hero_h1">Анализы <em>не врут</em></h1>
+    <p class="lead" data-i18n="hero_lead">Я — Татьяна Чернышова, врач с 20-летней клинической практикой. Помогаю женщинам 35+ вернуть энергию, сон и кожу — работая с причинами по анализам, а не с симптомами по отдельности.</p>
+    <div class="cta-row">
+      <a class="btn" href="#course" data-i18n="hero_cta1">Курс «Молодость изнутри: 30 дней»</a>
+      <a class="btn ghost" href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','hero')" data-i18n="hero_cta2">Бесплатный тест на дефициты</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ БЛАНК ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="blank_eyebrow">Знакомая история</div>
+    <h2 data-i18n="blank_h2">«Всё в норме», — говорит врач. А сил нет</h2>
+    <div class="blank" aria-label="Пример бланка анализов">
+      <div class="blank-head" data-i18n="blank_head">Результаты исследований · пример из практики</div>
+      <div class="blank-row"><span class="name" data-i18n="blank_r1">Ферритин</span><span class="val low">18</span><span class="ref" data-i18n="blank_ref1">реф. 13–150 нг/мл</span></div>
+      <div class="blank-row"><span class="name" data-i18n="blank_r2">Витамин D</span><span class="val low">31</span><span class="ref" data-i18n="blank_ref2">реф. 30–100 нг/мл</span></div>
+      <div class="blank-row"><span class="name" data-i18n="blank_r3">ТТГ</span><span class="val ok">3.9</span><span class="ref" data-i18n="blank_ref3">реф. 0.4–4.0 мМЕ/л</span></div>
+    </div>
+    <p style="margin-top:20px" data-i18n="blank_p1">Формально — в границах. Ферритин 18 при референсе «от 13» лаборатория не подчеркнёт. Но усталость с самого утра, волосы на расчёске и тусклая кожа — это не характер и не «просто возраст». Это тело подаёт сигнал.</p>
+    <p data-i18n="blank_p2">Разница между «нормой лаборатории» и состоянием, в котором тело восстанавливается, — огромная. Я работаю со вторым.</p>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="about_eyebrow">Кто я</div>
+    <h2 data-i18n="about_h2">Я смотрю на возраст с двух сторон: как невролог и как косметолог</h2>
+    <p data-i18n="about_p1">Кожа, энергия, сон и гормоны — одна система. Ко мне приходят женщины, которые годами лечили симптомы по отдельности: у косметолога, у эндокринолога, у невролога. Моя работа — собрать картину целиком и найти причину.</p>
+    <div class="about-photo"><img src="img/about.jpg" alt="Татьяна Чернышова" loading="lazy"></div>
+    <ul class="fact-list">
+      <li><span class="m">01</span><span data-i18n="fact1">Врач-невролог и косметолог</span></li>
+      <li><span class="m">02</span><span data-i18n="fact2">Доктор наук · Институт биомедицины, Гранада (Испания)</span></li>
+      <li><span class="m">03</span><span data-i18n="fact3">20 лет клинической практики</span></li>
+      <li><span class="m">04</span><span data-i18n="fact4">Специализация: anti-age медицина, женское здоровье 35+, превентивная медицина по анализам</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ FLAGSHIP ═══ -->
+<section id="course">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="course_eyebrow">Мой главный курс</div>
+    <h2 data-i18n="course_h2">Молодость изнутри: 30 дней</h2>
+    <p data-i18n="course_p1">30 уроков — один в день. Сон, дыхание, питание, уход: протоколы из моей клинической практики, собранные в систему, которая работает на клеточном уровне.</p>
+    <div class="quote" data-i18n="course_quote">Не детокс. Не марафон. Система, к которой тело возвращается само — потому что чувствует разницу.</div>
+
+    <div class="fit">
+      <div class="col yes">
+        <h3 data-i18n="fit_yes_h">Курс для вас, если</h3>
+        <ul>
+          <li data-i18n="fit_yes1">усталость не уходит после отдыха</li>
+          <li data-i18n="fit_yes2">кожа и волосы изменились за последние годы</li>
+          <li data-i18n="fit_yes3">врачи говорят «всё в норме», а самочувствие — нет</li>
+          <li data-i18n="fit_yes4">хотите систему, а не набор советов</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3 data-i18n="fit_no_h">Курс не подойдёт, если</h3>
+        <ul>
+          <li data-i18n="fit_no1">ждёте эффект без ежедневных действий</li>
+          <li data-i18n="fit_no2">ищете «волшебную» добавку или укол</li>
+          <li data-i18n="fit_no3">нужно лечение острого заболевания — это к лечащему врачу</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tariffs">
+      <div class="tariff">
+        <div class="t-top"><h3 data-i18n="t1_name">Пробный · 7 дней</h3><span class="price">€10</span></div>
+        <ul>
+          <li data-i18n="t1_f1">7 первых уроков</li>
+          <li data-i18n="t1_f2">посмотрите формат, прежде чем решать</li>
+        </ul>
+        <button class="btn ghost block" onclick="payFlagship('https://secure.wayforpay.com/button/b1dfd9c78fe33','trial')" data-i18n="t1_btn">Начать с пробного →</button>
+      </div>
+      <div class="tariff featured">
+        <div class="badge" data-i18n="t2_badge">Рекомендую этот</div>
+        <div class="t-top"><h3 data-i18n="t2_name">Базовый · 30 дней</h3><span class="price">€100</span></div>
+        <ul>
+          <li data-i18n="t2_f1">все 30 уроков</li>
+          <li data-i18n="t2_f2">мои личные ответы в группе курса</li>
+        </ul>
+        <button class="btn block" onclick="payFlagship('https://secure.wayforpay.com/button/b14ba4175039e','base')" data-i18n="t2_btn">Выбрать Базовый →</button>
+      </div>
+      <div class="tariff">
+        <div class="t-top"><h3 data-i18n="t3_name">Полный · 30 дней</h3><span class="price">€250</span></div>
+        <ul>
+          <li data-i18n="t3_f1">всё, что в Базовом</li>
+          <li data-i18n="t3_f2">консультация со мной в начале: разбираем вашу ситуацию</li>
+          <li data-i18n="t3_f3">консультация в конце: протокол на следующий месяц</li>
+        </ul>
+        <button class="btn ghost block" onclick="payFlagship('https://secure.wayforpay.com/button/b3df5a30271ea','full')" data-i18n="t3_btn">Выбрать Полный →</button>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:18px; font-size:14.5px" data-i18n="course_anchor">Для сравнения: индивидуальный разбор со мной стоит €200 за час. В Базовом тарифе — та же система, разложенная по дням на месяц.</p>
+  </div>
+</section>
+
+<!-- ═══ CABINET MOCKUP ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="cab_eyebrow">Как проходит курс</div>
+    <h2 data-i18n="cab_h2">Один день — один шаг</h2>
+    <p data-i18n="cab_p1">Уроки открываются по одному в день — от вашей даты старта. Так тело успевает закрепить каждый шаг, а вы не перегораете от «всего сразу».</p>
+    <div class="cab">
+      <span class="m-badge" data-i18n="cab_badge">Пример · так выглядит ваш день в курсе</span>
+      <div class="prog-label"><span data-i18n="cab_day">День 5 из 30</span><span>17%</span></div>
+      <div class="prog"><i></i></div>
+      <div class="lesson">
+        <h3 data-i18n="cab_lesson_h">Урок 5 · Дыхание, которое снимает напряжение</h3>
+        <p class="muted" style="font-size:14.5px" data-i18n="cab_lesson_p">Видео-урок + короткий конспект. Смотрите когда вам удобно.</p>
+        <div class="hw">
+          <b data-i18n="cab_hw_b">Практика дня</b>
+          <span data-i18n="cab_hw_p">3 вопроса для себя: что я заметила сегодня? что далось легко? что возьму в завтрашний день?</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px" data-i18n="cab_p2">Вопросы по урокам вы задаёте в группе курса — на Базовом и Полном тарифах я отвечаю лично.</p>
+  </div>
+</section>
+
+<!-- ═══ CATALOG ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="cat_eyebrow">Ещё курсы</div>
+    <h2 data-i18n="cat_h2">Точечные программы</h2>
+    <div class="cards" id="catalog"></div>
+  </div>
+</section>
+
+<!-- ═══ FREE TEST ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="test_eyebrow">Бесплатный первый шаг</div>
+    <h2 data-i18n="test_h2">Не готовы к курсу — начните с теста</h2>
+    <p data-i18n="test_p1">20 вопросов «да/нет», 2–3 минуты. В конце — на какие дефициты похожи ваши симптомы и какие анализы обсудить с врачом. Тест проходит в моём Telegram-боте.</p>
+    <a class="btn" href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','test')" data-i18n="test_btn">Пройти тест в боте →</a>
+  </div>
+</section>
+
+<!-- ═══ CONSULT ═══ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="consult_eyebrow">Индивидуально</div>
+    <h2 data-i18n="consult_h2">Персональный разбор со мной</h2>
+    <p data-i18n="consult_p1">60 минут онлайн: ваш тип старения, разбор ухода, какие анализы сдать. На руки — персональный протокол: питание, сон, уход. Стоимость — €200.</p>
+    <a class="btn ghost" href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','consult')" data-i18n="consult_btn">Записаться через бот →</a>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section>
+  <div class="wrap faq">
+    <div class="eyebrow">FAQ</div>
+    <h2 data-i18n="faq_h2">Частые вопросы</h2>
+    <details>
+      <summary data-i18n="faq1_q">Как я получу курс после оплаты?</summary>
+      <p data-i18n="faq1_a">Доступ приходит в Telegram. Если после оплаты что-то не пришло — напишите в бот, разберёмся в тот же день.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq2_q">Как проходит оплата?</summary>
+      <p data-i18n="faq2_a">Банковской картой через защищённую страницу WayForPay. Данные карты видит только платёжная система.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq3_q">Я не в Украине — могу купить?</summary>
+      <p data-i18n="faq3_a">Оплата — банковской картой через WayForPay. Если карта из вашей страны не проходит — напишите в бот, подберём способ.</p>
+    </details>
+    <details>
+      <summary data-i18n="faq4_q">Остались вопросы?</summary>
+      <p data-i18n="faq4_a">Напишите в бот — я или моя команда ответим.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="final">
+  <div class="wrap">
+    <p class="anchor-line" data-i18n="final_quote">«Те, кто слышит вовремя — выигрывают годы»</p>
+    <h2 data-i18n="final_h2">Начните со своих 30 дней</h2>
+    <div class="cta-row" style="justify-content:center">
+      <a class="btn" href="#course" data-i18n="final_btn">К тарифам курса ↑</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://www.instagram.com/doctor.chernyshova_spain" target="_blank" rel="noopener">Instagram (RU/ES)</a>
+      <a href="https://www.instagram.com/doctor.chernyshovatatiana" target="_blank" rel="noopener">Instagram (UA)</a>
+      <a href="https://t.me/dr_chernyshova_bot" target="_blank" rel="noopener" onclick="track('site_bot_click','footer')">Telegram-бот</a>
+    </div>
+    <p data-i18n="footer_note">Оплата проходит через защищённую страницу WayForPay. Курсы не заменяют консультацию вашего лечащего врача.</p>
+    <p style="margin-top:10px">Татьяна Чернышова · врач-невролог, косметолог · © 2026</p>
+  </div>
+</footer>
+
+<!-- ═══ UPSELL MODAL ═══ -->
+<div class="modal-bg" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsell-h">
+  <div class="modal">
+    <h3 id="upsell-h" data-i18n="up_h">🩸 Усильте результат курса</h3>
+    <p data-i18n="up_p">Усталость и выпадение волос часто связаны с низким ферритином. Курс «Ферритин: вернуть энергию» (5 уроков, €16) разбирает эту тему глубже — сильное дополнение к 30-дневной системе.</p>
+    <button class="btn block" id="up-continue" data-i18n="up_go">Продолжить к оплате курса →</button>
+    <button class="btn ghost block" onclick="openPay('https://secure.wayforpay.com/button/b55749e6e1ec8','ferritin_upsell')" data-i18n="up_add">Открыть оплату «Ферритина» — €16</button>
+    <button class="skip" id="up-skip" data-i18n="up_skip">Только курс, спасибо</button>
+  </div>
+</div>
+
+<script>
+const WEBHOOK = "https://script.google.com/macros/s/AKfycbwMvQxzlnc-T01Kk_Ynby0bYBTobC7v_TD0UBe78W0cTe7qoIsgXLCEjj8COL_9DoIwsQ/exec";
+const BOT_URL = "https://t.me/dr_chernyshova_bot";
+
+/* ── каталог (цены и ссылки = источник правды: витрина index.html) ── */
+const CATALOG = {
+  ru: [
+    { emoji: "🩸", title: "Ферритин: вернуть энергию", price: "€16",
+      desc: "Усталость, выпадение волос, бледность — часто скрытый дефицит ферритина. 5 уроков + чек-лист анализов.",
+      url: "https://secure.wayforpay.com/button/b55749e6e1ec8", id: "ferritin" },
+    { emoji: "❄️", title: "Уход за кожей зимой", price: "€30",
+      desc: "Как восстановить барьер кожи за 4 недели, дома. 5 уроков + протокол ухода.",
+      url: null, id: "winter" },
+    { emoji: "📱", title: "Социальные сети для эксперта", price: "цена на стр. оплаты",
+      desc: "Как расти в Instagram, TikTok и Telegram — без танцев и выгорания. Для врачей, косметологов, экспертов.",
+      url: "https://secure.wayforpay.com/button/b4af6c7878dfb", id: "social" },
+  ],
+  ua: [
+    { emoji: "🩸", title: "Феритин: повернути енергію", price: "€16",
+      desc: "Втома, випадіння волосся, блідість — часто прихований дефіцит феритину. 5 уроків + чек-лист аналізів.",
+      url: "https://secure.wayforpay.com/button/b55749e6e1ec8", id: "ferritin" },
+    { emoji: "🧘", title: "Фасціальний біль", price: "1000 грн",
+      desc: "Коли болить «усе тіло», а аналізи в нормі. 11 уроків: вправи, валик, дихання.",
+      url: "https://secure.wayforpay.com/button/bfdbad490d98f", id: "fascia" },
+    { emoji: "📖", title: "Книга «Склянка води»", price: "ціна на стор. оплати",
+      desc: "Про лімфатичну систему, водний баланс і просту систему підтримки тіла.",
+      url: "https://secure.wayforpay.com/button/bcaafaf774eaa", id: "book" },
+    { emoji: "📱", title: "Соціальні мережі для експерта", price: "ціна на стор. оплати",
+      desc: "Як зростати в Instagram, TikTok і Telegram — без танців і вигорання.",
+      url: "https://secure.wayforpay.com/button/b4af6c7878dfb", id: "social" },
+  ],
+};
+
+/* ── украинский перевод ── */
+const UA = {
+  hero_eyebrow: "Лікар-невролог · косметолог",
+  hero_h1: "Аналізи <em>не брешуть</em>",
+  hero_lead: "Я — Тетяна Чернишова, лікар із 20-річною клінічною практикою. Допомагаю жінкам 35+ повернути енергію, сон і шкіру — працюючи з причинами за аналізами, а не з симптомами окремо.",
+  hero_cta1: "Курс «Молодість зсередини: 30 днів»",
+  hero_cta2: "Безкоштовний тест на дефіцити",
+  blank_eyebrow: "Знайома історія",
+  blank_h2: "«Все в нормі», — каже лікар. А сил немає",
+  blank_head: "Результати досліджень · приклад із практики",
+  blank_r1: "Феритин", blank_ref1: "реф. 13–150 нг/мл",
+  blank_r2: "Вітамін D", blank_ref2: "реф. 30–100 нг/мл",
+  blank_r3: "ТТГ", blank_ref3: "реф. 0.4–4.0 мМО/л",
+  blank_p1: "Формально — у межах. Феритин 18 при референсі «від 13» лабораторія не підкреслить. Але втома із самого ранку, волосся на гребінці й тьмяна шкіра — це не характер і не «просто вік». Це тіло подає сигнал.",
+  blank_p2: "Різниця між «нормою лабораторії» та станом, у якому тіло відновлюється, — величезна. Я працюю з другим.",
+  about_eyebrow: "Хто я",
+  about_h2: "Я дивлюся на вік із двох боків: як невролог і як косметолог",
+  about_p1: "Шкіра, енергія, сон і гормони — одна система. До мене приходять жінки, які роками лікували симптоми окремо: у косметолога, ендокринолога, невролога. Моя робота — зібрати картину цілком і знайти причину.",
+  fact1: "Лікар-невролог і косметолог",
+  fact2: "Доктор наук · Інститут біомедицини, Гранада (Іспанія)",
+  fact3: "20 років клінічної практики",
+  fact4: "Спеціалізація: anti-age медицина, жіноче здоров'я 35+, превентивна медицина за аналізами",
+  course_eyebrow: "Мій головний курс",
+  course_h2: "Молодість зсередини: 30 днів",
+  course_p1: "30 уроків — один на день. Сон, дихання, харчування, догляд: протоколи з моєї клінічної практики, зібрані в систему, що працює на клітинному рівні.",
+  course_quote: "Не детокс. Не марафон. Система, до якої тіло повертається саме — бо відчуває різницю.",
+  fit_yes_h: "Курс для вас, якщо",
+  fit_yes1: "втома не минає після відпочинку",
+  fit_yes2: "шкіра й волосся змінилися за останні роки",
+  fit_yes3: "лікарі кажуть «все в нормі», а самопочуття — ні",
+  fit_yes4: "хочете систему, а не набір порад",
+  fit_no_h: "Курс не підійде, якщо",
+  fit_no1: "чекаєте на ефект без щоденних дій",
+  fit_no2: "шукаєте «чарівну» добавку чи ін'єкцію",
+  fit_no3: "потрібне лікування гострого захворювання — це до вашого лікаря",
+  t1_name: "Пробний · 7 днів",
+  t1_f1: "7 перших уроків", t1_f2: "подивіться формат, перш ніж вирішити",
+  t1_btn: "Почати з пробного →",
+  t2_badge: "Раджу цей",
+  t2_name: "Базовий · 30 днів",
+  t2_f1: "усі 30 уроків", t2_f2: "мої особисті відповіді у групі курсу",
+  t2_btn: "Обрати Базовий →",
+  t3_name: "Повний · 30 днів",
+  t3_f1: "усе, що в Базовому",
+  t3_f2: "консультація зі мною на початку: розбираємо вашу ситуацію",
+  t3_f3: "консультація наприкінці: протокол на наступний місяць",
+  t3_btn: "Обрати Повний →",
+  course_anchor: "Для порівняння: індивідуальний розбір зі мною коштує €200 за годину. У Базовому тарифі — та сама система, розкладена за днями на місяць.",
+  cab_eyebrow: "Як проходить курс",
+  cab_h2: "Один день — один крок",
+  cab_p1: "Уроки відкриваються по одному на день — від вашої дати старту. Так тіло встигає закріпити кожен крок, а ви не вигораєте від «усього одразу».",
+  cab_badge: "Приклад · так виглядає ваш день у курсі",
+  cab_day: "День 5 із 30",
+  cab_lesson_h: "Урок 5 · Дихання, що знімає напругу",
+  cab_lesson_p: "Відео-урок + короткий конспект. Дивіться коли вам зручно.",
+  cab_hw_b: "Практика дня",
+  cab_hw_p: "3 запитання до себе: що я помітила сьогодні? що далося легко? що візьму із собою на завтра?",
+  cab_p2: "Запитання щодо уроків ви ставите у групі курсу — на Базовому й Повному тарифах я відповідаю особисто.",
+  cat_eyebrow: "Ще курси",
+  cat_h2: "Точкові програми",
+  test_eyebrow: "Безкоштовний перший крок",
+  test_h2: "Не готові до курсу — почніть із тесту",
+  test_p1: "20 запитань «так/ні», 2–3 хвилини. Наприкінці — на які дефіцити схожі ваші симптоми і які аналізи обговорити з лікарем. Тест проходить у моєму Telegram-боті.",
+  test_btn: "Пройти тест у боті →",
+  consult_eyebrow: "Індивідуально",
+  consult_h2: "Персональний розбір зі мною",
+  consult_p1: "60 хвилин онлайн: ваш тип старіння, розбір догляду, які аналізи здати. На руки — персональний протокол: харчування, сон, догляд. Вартість — €200.",
+  consult_btn: "Записатися через бот →",
+  faq_h2: "Часті запитання",
+  faq1_q: "Як я отримаю курс після оплати?",
+  faq1_a: "Доступ приходить у Telegram. Якщо після оплати щось не прийшло — напишіть у бот, розберемося того ж дня.",
+  faq2_q: "Як проходить оплата?",
+  faq2_a: "Банківською карткою через захищену сторінку WayForPay. Дані картки бачить лише платіжна система.",
+  faq3_q: "Я не в Україні — чи можу купити?",
+  faq3_a: "Оплата — банківською карткою через WayForPay. Якщо картка з вашої країни не проходить — напишіть у бот, підберемо спосіб.",
+  faq4_q: "Залишилися запитання?",
+  faq4_a: "Напишіть у бот — я або моя команда відповімо.",
+  final_quote: "«Ті, хто чує вчасно — виграють роки»",
+  final_h2: "Почніть зі своїх 30 днів",
+  final_btn: "До тарифів курсу ↑",
+  footer_note: "Оплата проходить через захищену сторінку WayForPay. Курси не замінюють консультацію вашого лікаря.",
+  up_h: "🩸 Підсильте результат курсу",
+  up_p: "Втома й випадіння волосся часто пов'язані з низьким феритином. Курс «Феритин: повернути енергію» (5 уроків, €16) розбирає цю тему глибше — сильне доповнення до 30-денної системи.",
+  up_go: "Продовжити до оплати курсу →",
+  up_add: "Відкрити оплату «Феритину» — €16",
+  up_skip: "Лише курс, дякую",
+};
+const RU_CACHE = {};
+
+let lang = new URLSearchParams(location.search).get("lang") === "ua" ? "ua" : "ru";
+
+function track(event, source) {
+  try {
+    fetch(WEBHOOK, {
+      method: "POST", mode: "no-cors",
+      body: JSON.stringify({
+        timestamp: new Date().toISOString(), record: "event", event: event,
+        telegram_id: 0, telegram_username: "", lang: lang, direction: "b2c",
+        source: source || "site",
+      }),
+    }).catch(function () {});
+  } catch (e) { /* аналитика не должна ломать сайт */ }
+}
+
+function openPay(url, id) {
+  track("site_pay_" + id);
+  window.open(url, "_blank", "noopener");
+}
+
+/* флагман: сперва бонус-модалка, потом оплата */
+let pendingPay = null;
+let lastPayTrigger = null;
+function closeUpsell() {
+  document.getElementById("upsell").classList.remove("open");
+  pendingPay = null;
+  if (lastPayTrigger) { lastPayTrigger.focus(); lastPayTrigger = null; }
+}
+function payFlagship(url, id) {
+  /* апсейл €16 к пробному за €10 не предлагаем — только к Базовому и Полному */
+  let shown = false;
+  try { shown = sessionStorage.getItem("upsell_shown") === "1"; } catch (e) {}
+  if (id === "trial" || shown) { openPay(url, id); return; }
+  try { sessionStorage.setItem("upsell_shown", "1"); } catch (e) {}
+  pendingPay = { url: url, id: id };
+  lastPayTrigger = document.activeElement;
+  document.getElementById("upsell").classList.add("open");
+  document.getElementById("up-continue").focus();
+  track("site_upsell_shown", id);
+}
+document.getElementById("up-continue").addEventListener("click", proceedPay);
+document.getElementById("up-skip").addEventListener("click", proceedPay);
+document.getElementById("upsell").addEventListener("click", function (e) {
+  if (e.target === this) closeUpsell();
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && document.getElementById("upsell").classList.contains("open")) closeUpsell();
+});
+function proceedPay() {
+  const p = pendingPay;
+  closeUpsell();
+  if (p) openPay(p.url, p.id);
+}
+
+function renderCatalog() {
+  const grid = document.getElementById("catalog");
+  grid.replaceChildren();
+  const t = lang === "ua"
+    ? { buy: "Оплатити →", inbot: "Дізнатися в боті →" }
+    : { buy: "Оплатить →", inbot: "Узнать в боте →" };
+  for (const c of CATALOG[lang]) {
+    const card = document.createElement("div");
+    card.className = "card";
+    const top = document.createElement("div"); top.className = "top";
+    const em = document.createElement("span"); em.className = "emoji"; em.textContent = c.emoji;
+    const h = document.createElement("h3"); h.textContent = c.title;
+    const pr = document.createElement("span"); pr.className = "price"; pr.textContent = c.price;
+    top.append(em, h, pr);
+    const d = document.createElement("p"); d.className = "desc"; d.textContent = c.desc;
+    card.append(top, d);
+    if (c.url) {
+      const b = document.createElement("button"); b.className = "btn"; b.textContent = t.buy;
+      b.addEventListener("click", () => openPay(c.url, c.id));
+      card.append(b);
+    } else {
+      const a = document.createElement("a"); a.className = "btn ghost"; a.textContent = t.inbot;
+      a.href = BOT_URL; a.target = "_blank"; a.rel = "noopener";
+      a.addEventListener("click", () => track("site_bot_click", c.id));
+      card.append(a);
+    }
+    grid.append(card);
+  }
+}
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l === "ua" ? "uk" : "ru";
+  document.getElementById("lang-ru").className = l === "ru" ? "active" : "";
+  document.getElementById("lang-ua").className = l === "ua" ? "active" : "";
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    if (!(key in RU_CACHE)) RU_CACHE[key] = el.innerHTML;
+    if (l === "ua" && UA[key]) el.innerHTML = UA[key];
+    if (l === "ru") el.innerHTML = RU_CACHE[key];
+  });
+  renderCatalog();
+}
+
+setLang(lang);
+track("site_open");
+</script>
+</body>
+</html>
