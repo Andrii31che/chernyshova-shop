@@ -85,6 +85,9 @@
     <h2 data-i18n="c_more_h2">Точечные программы</h2>
     <p class="muted" style="margin-bottom:26px" data-i18n="c_more_p">Наведите на карточку (или коснитесь), чтобы увидеть, что внутри.</p>
     <div class="grid-2" id="mini-courses"></div>
+    <h2 style="margin-top:56px" data-i18n="grp_pro">Обучение специалистов</h2>
+    <p class="muted" style="margin-bottom:26px" data-i18n="grp_pro_p">Для косметологов, врачей и экспертов, которые растят практику.</p>
+    <div class="grid-2" id="pro-courses"></div>
   </div>
 </section>
 
@@ -137,7 +140,7 @@ const MINI = {
     { t: "Уход за кожей зимой", p: "€30", d: "Сухость, шелушение, ранние морщины зимой — это физиология. Восстановление барьера за 4 недели, дома.",
       back: ["какие компоненты работают, а какие вредят", "что есть и пить, чтобы кожа не обезвоживалась", "5 уроков + протокол ухода"], pay: null },
     { t: "Социальные сети для эксперта", p: "цена на стр. оплаты", d: "Как расти в Instagram, TikTok и Telegram — без танцев и выгорания. Для врачей, косметологов, экспертов.",
-      back: ["как выбрать платформу под экспертизу", "структура контента, который читают", "монетизация без агрессивных продаж"], pay: "social" },
+      back: ["как выбрать платформу под экспертизу", "структура контента, который читают", "монетизация без агрессивных продаж"], pay: "social", pro: true },
   ],
   ua: [
     { t: "Феритин: повернути енергію", p: "€16", d: "Втома, випадіння волосся, блідість — часто прихований дефіцит феритину.",
@@ -147,12 +150,13 @@ const MINI = {
     { t: "Книга «Склянка води»", p: "ціна на стор. оплати", d: "Про лімфатичну систему, водний баланс і просту систему підтримки тіла.",
       back: ["чому лімфа — головна система детоксу", "техніки запуску лімфи на 5 хвилин на день", "зв'язок води зі шкірою та енергією"], pay: "book" },
     { t: "Соціальні мережі для експерта", p: "ціна на стор. оплати", d: "Як зростати в Instagram, TikTok і Telegram — без танців і вигорання.",
-      back: ["як обрати платформу під експертизу", "структура контенту, який читають", "монетизація без агресивних продажів"], pay: "social" },
+      back: ["як обрати платформу під експертизу", "структура контенту, який читають", "монетизація без агресивних продажів"], pay: "social", pro: true },
   ],
 };
 function renderMini() {
   const grid = document.getElementById("mini-courses");
-  grid.replaceChildren();
+  const proGrid = document.getElementById("pro-courses");
+  grid.replaceChildren(); proGrid.replaceChildren();
   const t = lang === "ua"
     ? { buy: UA.c_buy, inbot: UA.c_inbot, flip: UA.c_flip }
     : { buy: "Оплатить", inbot: "Узнать в боте", flip: "что внутри →" };
@@ -184,9 +188,9 @@ function renderMini() {
     }
     inn.append(front, back);
     flip.append(inn);
-    grid.append(flip);
+    (c.pro ? proGrid : grid).append(flip);
   });
-  document.querySelectorAll("#mini-courses .flip").forEach(function (f) {
+  document.querySelectorAll("#mini-courses .flip, #pro-courses .flip").forEach(function (f) {
     f.addEventListener("click", function (e) {
       if (e.target.closest("a,button")) return;
       f.classList.toggle("tapped");
