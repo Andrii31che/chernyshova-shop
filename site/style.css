@@ -33,14 +33,16 @@
 /* Татьяна Чернышова — дизайн-система сайта
    Палитра: нейтральная база + ОДИН акцент (бордо), по паттерну топ-клиник */
 :root {
-  --paper: #f7f2e9;      /* база */
-  --paper-2: #efe7d8;    /* тон секций */
-  --card: #fffdf8;
-  --ink: #1c1a17;
-  --ink-soft: #55504a;
-  --accent: #7d1f2e;     /* бордо — единственный акцент */
-  --accent-ink: #5e1622;
-  --line: #ddd2bf;
+  --paper: #ffffff;      /* база: белый люкс */
+  --paper-2: #f8f5ee;    /* айвори-тон секций */
+  --card: #ffffff;
+  --ink: #211c15;
+  --ink-soft: #5d5748;
+  --accent: #8a6a26;     /* глубокое золото-бронза: тексты, цены, кнопки (AA 5.0:1) */
+  --accent-ink: #6f541d;
+  --gold: #c5a557;       /* светлое золото: декор, рамки, чипы */
+  --gold-dark: #d9bc74;  /* золото на тёмном */
+  --line: #e6ddc8;
   --serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -73,7 +75,7 @@ p:last-child { margin-bottom: 0; }
 /* ── шапка: капслок-нав + sticky CTA ── */
 header.top {
   position: sticky; top: 0; z-index: 40;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -160,7 +162,7 @@ nav.main a.nav-cab:hover { background: var(--accent); color: #fff; border-color:
 .marquee { background: var(--ink); color: var(--paper); overflow: hidden; padding: 14px 0; }
 .marquee .track { display: flex; gap: 48px; white-space: nowrap; animation: mq 45s linear infinite; width: max-content; }
 .marquee span { font-family: var(--serif); font-style: italic; font-size: 17px; opacity: .92; }
-.marquee b { color: var(--paper); opacity: .4; font-family: var(--mono); font-weight: 400; }
+.marquee b { color: var(--gold-dark); opacity: .8; font-family: var(--mono); font-weight: 400; }
 @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee .track { animation: none; } }
 
@@ -168,12 +170,12 @@ nav.main a.nav-cab:hover { background: var(--accent); color: #fff; border-color:
 section { padding: clamp(60px, 9vw, 110px) 0; }
 section.tone { background: var(--paper-2); }
 section.dark { background: var(--ink); color: var(--paper); }
-section.dark .muted { color: #b9b2a6; }
-section.dark h2 em.acc { color: #d98a96; }
+section.dark .muted { color: #b3ab9c; }
+section.dark h2 em.acc { color: var(--gold-dark); }
 
 /* ── бланк анализов (сигнатура) ── */
 .blank {
-  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  background: var(--card); border: 1px solid var(--gold); border-radius: 16px;
   padding: 22px 22px 16px; font-family: var(--mono); font-size: 14px;
   box-shadow: 0 12px 40px rgba(28,26,23,.08); max-width: 560px;
 }
@@ -203,19 +205,19 @@ section.dark h2 em.acc { color: #d98a96; }
 .face .top-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 10px; }
 .face .price { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--accent); }
 .face .price--note { font-family: var(--mono); font-size: 12.5px; max-width: 140px; text-align: right; }
-.face.back .price { color: #d98a96; }
+.face.back .price { color: var(--gold-dark); }
 .face .desc { color: var(--ink-soft); font-size: 15px; flex: 1; }
 .face.back .desc { color: #cfc8bb; }
 .face .hint-flip { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; align-self: flex-start; }
 .face ul { list-style: none; margin: 0 0 14px; }
 .face li { padding: 3px 0 3px 18px; position: relative; font-size: 14.5px; }
-.face li::before { content: "—"; position: absolute; left: 0; color: #d98a96; }
+.face li::before { content: "—"; position: absolute; left: 0; color: var(--gold-dark); }
 
 /* ── тарифы ── */
 .tariffs { display: grid; gap: 16px; margin-top: 30px; }
 @media (min-width: 920px) { .tariffs { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
 .tariff { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; position: relative; display: flex; flex-direction: column; }
-.tariff.featured { border: 2px solid var(--accent); box-shadow: 0 18px 50px rgba(125,31,46,.16); }
+.tariff.featured { border: 2px solid var(--gold); box-shadow: 0 18px 50px rgba(138,106,38,.18); }
 .tariff .t-badge {
   position: absolute; top: -13px; left: 22px; background: var(--accent); color: #fff;
   font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
@@ -288,7 +290,7 @@ footer li { padding: 4px 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; align-content: center; }
 .chip {
   font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
-  border: 1px solid #55504a; border-radius: 999px; padding: 12px 20px; color: var(--paper);
+  border: 1px solid var(--gold); border-radius: 999px; padding: 12px 20px; color: var(--gold-dark);
 }
 
 /* ── личный кабинет ── */
@@ -299,13 +301,13 @@ footer li { padding: 4px 0; }
 .lk-card h2 { font-size: 24px; }
 .lk-card .field { display: flex; gap: 10px; margin-top: 12px; }
 .lk-card input[type=text] {
-  flex: 1; font: inherit; padding: 12px 16px; border: 1px solid var(--line);
+  flex: 1; font: inherit; padding: 12px 16px; border: 1px solid #9c7c35;
   border-radius: 999px; background: var(--paper); color: var(--ink); min-width: 0;
 }
 .lk-card input[type=text]:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
 .hw-form textarea {
   width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; margin: 6px 0 14px;
-  border: 1px solid var(--line); border-radius: 14px; background: var(--paper);
+  border: 1px solid #9c7c35; border-radius: 14px; background: var(--paper);
   color: var(--ink); resize: vertical; min-height: 64px;
 }
 .hw-form label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
@@ -313,4 +315,4 @@ footer li { padding: 4px 0; }
 .cart-row .nm { flex: 1; }
 .cart-row .pr { font-family: var(--serif); font-weight: 700; white-space: nowrap; }
 .cart-row .rm { background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: 13px; text-decoration: underline; }
-.tag-demo { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; background: var(--soft, #efe7d8); border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; color: var(--ink-soft); }
+.tag-demo { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; background: var(--paper-2); border: 1px solid var(--gold); border-radius: 8px; padding: 3px 8px; color: var(--ink-soft); }
