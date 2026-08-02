@@ -62,7 +62,7 @@ a { color: var(--accent); }
 h1, h2, h3, .display { font-family: var(--serif); font-weight: 700; letter-spacing: -.01em; }
 h1 { font-size: clamp(42px, 10vw, 96px); line-height: .98; }
 h2 { font-size: clamp(30px, 5.5vw, 52px); line-height: 1.06; margin-bottom: 20px; }
-h3 { font-size: 21px; margin-bottom: 8px; }
+h3 { font-size: 24px; margin-bottom: 8px; }
 em.acc { font-style: italic; color: var(--accent); }
 p { margin-bottom: 15px; }
 p:last-child { margin-bottom: 0; }
@@ -195,7 +195,7 @@ section.dark h2 em.acc { color: var(--gold-dark); }
 @media (min-width: 720px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 .flip { perspective: 1200px; min-height: 240px; }
 .flip-in { position: relative; display: grid; width: 100%; min-height: 240px; transition: transform .55s; transform-style: preserve-3d; }
-.flip:hover .flip-in, .flip.tapped .flip-in { transform: rotateY(180deg); }
+.flip:hover .flip-in, .flip.tapped .flip-in, .flip:focus-within .flip-in { transform: rotateY(180deg); }
 .face {
   grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;
   border-radius: 18px; padding: 24px; display: flex; flex-direction: column;
@@ -208,7 +208,7 @@ section.dark h2 em.acc { color: var(--gold-dark); }
 .face.back .price { color: var(--gold-dark); }
 .face .desc { color: var(--ink-soft); font-size: 15px; flex: 1; }
 .face.back .desc { color: #cfc8bb; }
-.face .hint-flip { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; align-self: flex-start; }
+.face .hint-flip { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; align-self: flex-start; }
 .face ul { list-style: none; margin: 0 0 14px; }
 .face li { padding: 3px 0 3px 18px; position: relative; font-size: 14.5px; }
 .face li::before { content: "—"; position: absolute; left: 0; color: var(--gold-dark); }
@@ -220,7 +220,7 @@ section.dark h2 em.acc { color: var(--gold-dark); }
 .tariff.featured { border: 2px solid var(--gold); box-shadow: 0 18px 50px rgba(138,106,38,.18); }
 .tariff .t-badge {
   position: absolute; top: -13px; left: 22px; background: var(--accent); color: #fff;
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
   padding: 5px 12px; border-radius: 999px;
 }
 .tariff .t-name { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
@@ -242,7 +242,7 @@ section.dark h2 em.acc { color: var(--gold-dark); }
 .day-list li:last-child { border-bottom: none; }
 .day-list .n { font-family: var(--mono); font-size: 12px; color: var(--accent); min-width: 52px; }
 .day-list .st { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
-.day-list li:not(.lock) .st { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.day-list li:not(.lock) .st { border: 1px solid #9c7c35; border-radius: 999px; padding: 4px 12px; }
 .day-list li.done .st { border-color: #3d6b50; }
 .day-list li.done .st { color: #3d6b50; }
 .day-list li.lock { opacity: .45; }
@@ -257,7 +257,7 @@ section.dark h2 em.acc { color: var(--gold-dark); }
 .faq summary { cursor: pointer; font-family: var(--serif); font-weight: 700; font-size: 19px; list-style: none; position: relative; padding-right: 30px; }
 .faq summary::after { content: "+"; position: absolute; right: 0; top: 0; font-family: var(--mono); color: var(--accent); font-size: 22px; }
 .faq details[open] summary::after { content: "–"; }
-.faq details p { margin-top: 12px; font-size: 15.5px; color: var(--ink-soft); }
+.faq details p { margin-top: 12px; font-size: 17px; color: var(--ink-soft); }
 footer { background: var(--ink); color: #b9b2a6; padding: 46px 0 56px; font-size: 14.5px; }
 footer a { color: var(--paper); text-decoration-color: #55504a; }
 footer .cols { display: grid; gap: 26px; margin-bottom: 26px; }

@@ -34,7 +34,7 @@
 <div class="sheet" id="sheet">
   <button class="close" onclick="closeSheet()" aria-label="Закрыть">×</button>
   <button class="lang-t" onclick="toggleLang()">UA</button>
-  <a data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
+  <a class="nav-cab" data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
   <a class="here" data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
   <a data-keep-lang data-i18n="nav_about" href="about.html">Обо мне</a>
   <a data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
@@ -84,11 +84,49 @@
 </section>
 
 <section class="tone">
+  <div class="wrap split">
+    <img src="img/about.jpg" alt="Татьяна Чернышова" style="border-radius:20px; max-width:420px" loading="lazy">
+    <div>
+      <div class="eyebrow" data-i18n="c_doc_eyebrow">Кто ведёт курс</div>
+      <h2 data-i18n="c_doc_h2">Врач, а не блогер</h2>
+      <ul class="fact-list">
+        <li><span class="m">01</span><span data-i18n="a_f1">Врач-невролог и косметолог</span></li>
+        <li><span class="m">02</span><span data-i18n="a_f2">Доктор наук · Институт биомедицины, Гранада</span></li>
+        <li><span class="m">03</span><span data-i18n="a_f3">20 лет клинической практики</span></li>
+        <li><span class="m">04</span><span data-i18n="a_f4">Anti-age медицина · женское здоровье 35+ · превентивная медицина по анализам</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="c_how_eyebrow">Как проходит</div>
+    <h2 data-i18n="c_how_h2">Один день — <em class="acc">один шаг</em></h2>
+    <div class="tariffs" style="margin-top:26px">
+      <div class="tariff"><span class="t-name">01</span><h3 style="margin-top:8px" data-i18n="c_how1_h">Урок дня</h3><p class="muted" style="font-size:15px" data-i18n="c_how1_p">Уроки открываются по одному в день — от вашей даты старта. Смотрите когда удобно.</p></div>
+      <div class="tariff"><span class="t-name">02</span><h3 style="margin-top:8px" data-i18n="c_how2_h">Практика</h3><p class="muted" style="font-size:15px" data-i18n="c_how2_p">После урока — короткая практика на закрепление. День засчитывается после неё.</p></div>
+      <div class="tariff"><span class="t-name">03</span><h3 style="margin-top:8px" data-i18n="c_how3_h">Мои ответы</h3><p class="muted" style="font-size:15px" data-i18n="c_how3_p">На Базовом и Полном тарифах вы задаёте вопросы в группе курса — отвечаю лично.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tone">
+  <div class="wrap narrow faq">
+    <h2 data-i18n="faq_h2">Частые вопросы</h2>
+    <details><summary data-i18n="faq1_q">Как я получу курс после оплаты?</summary><p data-i18n="faq1_a">Доступ приходит в Telegram. Если после оплаты что-то не пришло — напишите в бот, разберёмся в тот же день.</p></details>
+    <details><summary data-i18n="faq2_q">Как проходит оплата?</summary><p data-i18n="faq2_a">Банковской картой через защищённую страницу WayForPay. Данные карты видит только платёжная система.</p></details>
+    <details><summary data-i18n="faq3_q">Я не в Украине — могу купить?</summary><p data-i18n="faq3_a">Оплата — банковской картой через WayForPay. Если карта из вашей страны не проходит — напишите в бот, подберём способ.</p></details>
+    <details><summary data-i18n="faq5_q">Можно ли вернуть деньги?</summary><p data-i18n="faq5_a">Напишите в бот — разберём вашу ситуацию лично.</p></details>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
     <h2 data-i18n="c_more_h2">Точечные программы</h2>
-    <p class="muted" style="margin-bottom:26px" data-i18n="c_more_p">Наведите на карточку (или коснитесь), чтобы увидеть, что внутри.</p>
+    <p class="muted" style="margin-bottom:26px" data-i18n="c_more_p">Коснитесь карточки — внутри программа.</p>
     <div class="grid-2" id="mini-courses"></div>
-    <h2 style="margin-top:56px" data-i18n="grp_pro">Обучение специалистов</h2>
+    <h2 style="margin-top:56px" id="pro" data-i18n="grp_pro">Обучение специалистов</h2>
     <p class="muted" style="margin-bottom:26px" data-i18n="grp_pro_p">Для косметологов, врачей и экспертов, которые растят практику.</p>
     <div class="grid-2" id="pro-courses"></div>
   </div>
@@ -122,16 +160,6 @@
     <p>Татьяна Чернышова · врач-невролог, косметолог · © 2026</p>
   </div>
 </footer>
-
-<div class="modal-bg" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsell-h">
-  <div class="modal">
-    <h3 id="upsell-h" data-i18n="up_h">Усильте результат курса</h3>
-    <p data-i18n="up_p">Усталость и выпадение волос часто связаны с низким ферритином. Курс «Ферритин: вернуть энергию» (5 уроков, €16) разбирает эту тему глубже.</p>
-    <button class="btn block" id="up-continue" data-i18n="up_go">Продолжить к оплате курса →</button>
-    <button class="btn ghost block" onclick="openPay(PAY.ferritin,'ferritin_upsell')" data-i18n="up_add">Открыть оплату «Ферритина» — €16</button>
-    <button class="skip" id="up-skip" data-i18n="up_skip">Только курс, спасибо</button>
-  </div>
-</div>
 
 <script src="app.js"></script>
 <script>
@@ -201,14 +229,13 @@ function renderMini() {
     flip.append(inn);
     (c.pro ? proGrid : grid).append(flip);
   });
-  document.querySelectorAll("#mini-courses .flip, #pro-courses .flip").forEach(function (f) {
-    f.addEventListener("click", function (e) {
-      if (e.target.closest("a,button")) return;
-      f.classList.toggle("tapped");
-    });
-  });
 }
 renderMini();
+document.addEventListener("click", function (e) {
+  const f = e.target.closest(".flip");
+  if (!f || e.target.closest("a,button")) return;
+  f.classList.toggle("tapped");
+});
 const _origToggle = toggleLang;
 toggleLang = function () { _origToggle(); renderMini(); };
 </script>

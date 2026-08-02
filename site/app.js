@@ -92,6 +92,18 @@ const UA = {
   c_more_p: "Наведіть на картку (або торкніться), щоб побачити, що всередині.",
   c_flip: "що всередині →",
   c_buy: "Оплатити", c_inbot: "Дізнатися в боті",
+  pro_eyebrow: "Колегам", pro_h2: 'Навчання <em class="acc">спеціалістів</em>',
+  pro_p: "Косметологам, лікарям та експертам: як зростати в соцмережах без вигорання і будувати практику на довірі.",
+  pro_btn: "Програми для спеціалістів",
+  fin_h2: 'Почніть із пробного — <em class="acc">€10</em>',
+  fin_p: "7 уроків, щоб спробувати систему до повного рішення.",
+  fin_btn: "До тарифів курсу",
+  c_doc_eyebrow: "Хто веде курс", c_doc_h2: "Лікар, а не блогер",
+  c_how_eyebrow: "Як проходить", c_how_h2: 'Один день — <em class="acc">один крок</em>',
+  c_how1_h: "Урок дня", c_how1_p: "Уроки відкриваються по одному на день — від вашої дати старту. Дивіться коли зручно.",
+  c_how2_h: "Практика", c_how2_p: "Після уроку — коротка практика на закріплення. День зараховується після неї.",
+  c_how3_h: "Мої відповіді", c_how3_p: "На Базовому й Повному тарифах ви ставите запитання у групі курсу — відповідаю особисто.",
+  faq5_q: "Чи можна повернути гроші?", faq5_a: "Напишіть у бот — розберемо вашу ситуацію особисто.",
   grp_pro: "Навчання спеціалістів", grp_pro_p: "Для косметологів, лікарів та експертів, які ростять практику.",
   /* Про Тетяну */
   a_eyebrow: "Про мене",
@@ -219,32 +231,8 @@ function cartBadge() {
 function openSheet() { document.getElementById("sheet").classList.add("open"); }
 function closeSheet() { document.getElementById("sheet").classList.remove("open"); }
 
-/* ── модалка допродажи (только Базовый/Полный) ── */
-let pendingPay = null, lastPayTrigger = null;
-function closeUpsell() {
-  const m = document.getElementById("upsell");
-  if (m) m.classList.remove("open");
-  pendingPay = null;
-  if (lastPayTrigger) { lastPayTrigger.focus(); lastPayTrigger = null; }
-}
-function payFlagship(id) {
-  const url = PAY[id];
-  let shown = false;
-  try { shown = sessionStorage.getItem("upsell_shown") === "1"; } catch (e) {}
-  const m = document.getElementById("upsell");
-  if (id === "trial" || shown || !m) { openPay(url, id); return; }
-  try { sessionStorage.setItem("upsell_shown", "1"); } catch (e) {}
-  pendingPay = { url: url, id: id };
-  lastPayTrigger = document.activeElement;
-  m.classList.add("open");
-  const c = document.getElementById("up-continue"); if (c) c.focus();
-  track("site_upsell_shown", id);
-}
-function proceedPay() { const p = pendingPay; closeUpsell(); if (p) openPay(p.url, p.id); }
-document.addEventListener("keydown", function (e) {
-  const m = document.getElementById("upsell");
-  if (e.key === "Escape" && m && m.classList.contains("open")) closeUpsell();
-});
+/* оплата тарифа — без перехватов (вердикт двух ревью: апселл переезжает в бот после оплаты) */
+function payFlagship(id) { openPay(PAY[id], id); }
 
 /* ── кабинет-демо: прогресс в localStorage ── */
 function cabInit() {
@@ -291,17 +279,5 @@ document.addEventListener("DOMContentLoaded", function () {
   applyLang();
   cabInit();
   track("site_open", document.body.dataset.page || "site");
-  const upC = document.getElementById("up-continue");
-  const upS = document.getElementById("up-skip");
-  const upBg = document.getElementById("upsell");
-  if (upC) upC.addEventListener("click", proceedPay);
-  if (upS) upS.addEventListener("click", proceedPay);
-  if (upBg) upBg.addEventListener("click", function (e) { if (e.target === this) closeUpsell(); });
-  /* флип-карточки на тач-экранах */
-  document.querySelectorAll(".flip").forEach(function (f) {
-    f.addEventListener("click", function (e) {
-      if (e.target.closest("a,button")) return;
-      f.classList.toggle("tapped");
-    });
-  });
+  cartBadge();
 });
