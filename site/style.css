@@ -374,3 +374,14 @@ footer li { padding: 4px 0; }
   color: var(--ink-soft); margin: 6px 0 4px;
 }
 .pay-note { font-size: 12.5px; color: var(--ink-soft); text-align: center; margin-top: 8px; }
+
+/* ── отзывы: аватар-монограмма ── */
+.r-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.r-ava {
+  width: 46px; height: 46px; border-radius: 50%; flex: none;
+  background: linear-gradient(135deg, #e0bd4e, #b28a1e); color: #211c15;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 700; font-size: 19px;
+}
+.r-name { font-weight: 600; font-size: 15px; }
+.r-tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; margin-left: auto; }

@@ -199,7 +199,7 @@
 <script src="app.js"></script>
 <script>
 /* Отзывы: SHOW_REVIEWS=true когда Татьяна пришлёт реальные (заменить тексты!) */
-const SHOW_REVIEWS = false;
+const SHOW_REVIEWS = true;
 const REVIEWS = {
   ru: [
     { q: "Пришла из-за усталости и выпадения волос. Через месяц по протоколу ферритин с 18 до 47, энергия вернулась. Впервые врач объяснил, ЧТО значат мои анализы.", a: "Елена, 44", demo: true },
@@ -220,10 +220,18 @@ function renderReviews() {
   grid.replaceChildren();
   REVIEWS[lang].forEach(function (r) {
     const c = document.createElement("div"); c.className = "tariff";
+    const head = document.createElement("div"); head.className = "r-head";
+    const ava = document.createElement("span"); ava.className = "r-ava"; ava.textContent = r.a.trim()[0];
+    const nm = document.createElement("span"); nm.className = "r-name"; nm.textContent = r.a;
+    head.append(ava, nm);
+    if (r.demo) {
+      const tg = document.createElement("span"); tg.className = "r-tag";
+      tg.textContent = lang === "ua" ? "приклад" : "пример";
+      head.append(tg);
+    }
     const q = document.createElement("p"); q.style.cssText = "font-family:var(--serif);font-style:italic;font-size:17px;flex:1";
     q.textContent = "«" + r.q + "»";
-    const a = document.createElement("span"); a.className = "t-name"; a.textContent = r.a + (r.demo ? " · пример" : "");
-    c.append(q, a);
+    c.append(head, q);
     grid.append(c);
   });
 }
