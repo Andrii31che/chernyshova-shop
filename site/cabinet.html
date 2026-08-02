@@ -43,13 +43,38 @@
 <section style="padding-bottom:30px">
   <div class="wrap">
     <div class="eyebrow rise" data-i18n="k_eyebrow">Кабинет ученицы</div>
-    <h1 class="rise d1 h1-sub" data-i18n="k_h1">Ваш курс — <em class="acc">в одном месте</em></h1>
+    <h1 class="rise d1 h1-sub" id="lk-hello" data-i18n="k_h1">Ваш курс — <em class="acc">в одном месте</em></h1>
     <p class="lead rise d2" style="max-width:620px; margin-top:14px" data-i18n="k_lead">Кабинет открывается после покупки курса: доступ приходит в Telegram. Ниже — демо: так будет выглядеть ваш прогресс.</p>
+  </div>
+</section>
+
+<section style="padding-top:0; padding-bottom:30px">
+  <div class="wrap lk-grid">
+    <div class="lk-card">
+      <div class="eyebrow" data-i18n="p_prof_h">Профиль</div>
+      <h2><span data-i18n="p_name_l">Как к вам обращаться?</span></h2>
+      <div class="field">
+        <input type="text" id="lk-name" maxlength="40" placeholder="Имя">
+        <button class="btn sm" id="lk-name-save" data-i18n="p_save">Сохранить</button>
+      </div>
+      <p class="muted" style="margin-top:14px; font-size:14px" data-i18n="p_code_note">Коды доступа заработают с запуском кабинета. Сейчас купленные курсы приходят в Telegram — если оплатили и ничего не пришло, напишите в бот.</p>
+      <div class="field">
+        <input type="text" id="lk-code" placeholder="XXXX-XXXX" aria-label="Код доступа">
+        <button class="btn ghost sm" id="lk-code-btn" data-i18n="p_code_btn">Активировать</button>
+      </div>
+      <p class="muted" id="lk-code-msg" style="margin-top:8px; font-size:13.5px"></p>
+    </div>
+    <div class="lk-card">
+      <div class="eyebrow" data-i18n="p_cart_h">Корзина</div>
+      <div id="lk-cart"></div>
+      <p class="muted" style="margin-top:12px; font-size:13.5px" data-i18n="p_cart_note">Каждый курс оплачивается отдельной защищённой страницей WayForPay.</p>
+    </div>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap narrow">
+    <div class="eyebrow"><span data-i18n="p_my_h">Мои курсы</span> · <span class="tag-demo" data-i18n="p_demo_tag">Демо-доступ</span></div>
     <div class="cab-shell">
       <div class="cab-bar"><span data-i18n="k_bar">Демо · Молодость изнутри</span><span id="cab-pct">17%</span></div>
       <div class="cab-body">
@@ -63,10 +88,19 @@
           <li data-day="5"><span class="n">День 5</span><span data-i18n="k_l5">Дыхание и лимфа</span><span class="st">отметить</span></li>
           <li class="lock"><span class="n">День 6</span><span data-i18n="k_lock">откроется завтра</span><span class="st" data-i18n="k_lock_st">закрыто</span></li>
         </ul>
-        <div class="hw"><b data-i18n="k_hw_b">Практика дня</b><span data-i18n="k_hw">3 вопроса для себя: что я заметила сегодня? что далось легко? что возьму с собой на завтра?</span></div>
+        <div class="hw hw-form">
+          <b data-i18n="p_hw_h">Практика дня</b>
+          <label for="hw1" data-i18n="p_hw_q1">Что я заметила сегодня?</label>
+          <textarea id="hw1"></textarea>
+          <label for="hw2" data-i18n="p_hw_q2">Что далось легко?</label>
+          <textarea id="hw2"></textarea>
+          <label for="hw3" data-i18n="p_hw_q3">Что возьму с собой на завтра?</label>
+          <textarea id="hw3"></textarea>
+          <button class="btn block" id="hw-send" data-i18n="p_hw_send">Сдать практику</button>
+          <p class="muted" id="hw-msg" style="margin-top:10px; font-size:13.5px" data-i18n="p_hw_note">День засчитывается после сданной практики — не за просмотр.</p>
+        </div>
       </div>
     </div>
-    <p class="muted" style="margin-top:16px; font-size:14.5px" data-i18n="k_demo_note">Это демо-режим: отмечайте дни и смотрите, как растёт прогресс. В реальном кабинете уроки открываются по одному в день.</p>
     <p style="margin-top:26px"><b data-i18n="k_q_h">Вопросы по ходу курса</b><br><span class="muted" data-i18n="k_q_p">На Базовом и Полном тарифах вы задаёте вопросы в группе курса — я отвечаю лично.</span></p>
   </div>
 </section>
@@ -108,5 +142,76 @@
 </footer>
 
 <script src="app.js"></script>
+<script>
+/* ── ЛК: имя, код, корзина, сдача практики ── */
+function lkT(ru, ua) { return lang === "ua" ? ua : ru; }
+function renderHello() {
+  let n = ""; try { n = localStorage.getItem("lk_name") || ""; } catch (e) {}
+  if (n) document.getElementById("lk-hello").innerHTML =
+    (lang === "ua" ? "Вітаю, " : "Здравствуйте, ") + n.replace(/[<>&"']/g, "") + ' <em class="acc">✳</em>';
+}
+function lkInit() {
+  const inp = document.getElementById("lk-name");
+  try { inp.value = localStorage.getItem("lk_name") || ""; } catch (e) {}
+  renderHello();
+  document.getElementById("lk-name-save").addEventListener("click", function () {
+    try { localStorage.setItem("lk_name", inp.value.trim()); } catch (e) {}
+    renderHello(); track("site_lk_name");
+  });
+  document.getElementById("lk-code-btn").addEventListener("click", function () {
+    document.getElementById("lk-code-msg").textContent =
+      lkT("Коды доступа заработают с запуском кабинета — сейчас доступ приходит в Telegram после оплаты.",
+          "Коди доступу запрацюють із запуском кабінету — зараз доступ приходить у Telegram після оплати.");
+    track("site_lk_code_try");
+  });
+  document.getElementById("hw-send").addEventListener("click", function () {
+    const a = ["hw1", "hw2", "hw3"].map(function (i) { return document.getElementById(i).value.trim(); });
+    const msg = document.getElementById("hw-msg");
+    if (a.join("").length < 10) {
+      msg.textContent = lkT("Заполните хотя бы один ответ — практика и есть курс.", "Заповніть хоча б одну відповідь — практика і є курс.");
+      return;
+    }
+    try { localStorage.setItem("lk_hw_" + done_key(), JSON.stringify(a)); } catch (e) {}
+    const total = window.cabMarkNext ? window.cabMarkNext() : 0;
+    ["hw1", "hw2", "hw3"].forEach(function (i) { document.getElementById(i).value = ""; });
+    msg.textContent = lkT("Практика сдана — день " + total + " засчитан!", "Практику здано — день " + total + " зараховано!");
+    track("site_lk_hw_done");
+  });
+  lkCart();
+}
+function done_key() { return String(new Date().getTime()); }
+function lkCart() {
+  const box = document.getElementById("lk-cart");
+  const items = cartGet();
+  box.replaceChildren();
+  if (!items.length) {
+    const p = document.createElement("p"); p.className = "muted";
+    p.textContent = lkT("Корзина пуста. Добавьте курс на странице «Курсы».", "Кошик порожній. Додайте курс на сторінці «Курси».");
+    box.append(p); return;
+  }
+  let sum = 0, hasGrn = false;
+  items.forEach(function (id) {
+    const it = CART_ITEMS[id]; if (!it) return;
+    const row = document.createElement("div"); row.className = "cart-row";
+    const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = it[lang] || it.ru;
+    const pr = document.createElement("span"); pr.className = "pr";
+    if (it.price) { pr.textContent = "€" + it.price; sum += it.price; }
+    else if (it.grn) { pr.textContent = it.grn + " грн"; hasGrn = true; }
+    else pr.textContent = lkT("цена на стр. оплаты", "ціна на стор. оплати");
+    const pay = document.createElement("button"); pay.className = "btn sm"; pay.textContent = lkT("Оплатить", "Оплатити");
+    pay.addEventListener("click", function () { openPay(PAY[id], id + "_cart"); });
+    const rm = document.createElement("button"); rm.className = "rm"; rm.textContent = lkT("убрать", "прибрати");
+    rm.addEventListener("click", function () { cartRemove(id); lkCart(); });
+    row.append(nm, pr, pay, rm); box.append(row);
+  });
+  const total = document.createElement("p");
+  total.style.cssText = "margin-top:12px; font-family:var(--serif); font-weight:700; font-size:19px";
+  total.textContent = lkT("Итого", "Разом") + ": €" + sum + (hasGrn ? " + 1000 грн" : "");
+  box.append(total);
+}
+lkInit();
+const _tl3 = toggleLang;
+toggleLang = function () { _tl3(); lkCart(); renderHello(); };
+</script>
 </body>
 </html>

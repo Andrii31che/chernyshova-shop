@@ -54,6 +54,7 @@
           <li data-i18n="c_t1_f2">посмотрите формат, прежде чем решать</li>
         </ul>
         <button class="btn ghost block" onclick="payFlagship('trial')" data-i18n="c_t1_btn">Начать с пробного</button>
+        <button class="btn ghost sm block" style="margin-top:8px" onclick="cartAddUi(this,'trial')" data-i18n="cart_add">В корзину</button>
       </div>
       <div class="tariff featured">
         <span class="t-badge" data-i18n="c_badge">Рекомендую этот</span>
@@ -64,6 +65,7 @@
           <li data-i18n="c_t2_f2">мои личные ответы в группе курса</li>
         </ul>
         <button class="btn block" onclick="payFlagship('base')" data-i18n="c_t2_btn">Выбрать Базовый</button>
+        <button class="btn ghost sm block" style="margin-top:8px" onclick="cartAddUi(this,'base')" data-i18n="cart_add">В корзину</button>
       </div>
       <div class="tariff">
         <span class="t-name"><span data-i18n="c_t3">Полный</span> · <span data-i18n="c_t3_d">30 дней</span></span>
@@ -74,6 +76,7 @@
           <li data-i18n="c_t3_f3">консультация в конце + протокол дальше</li>
         </ul>
         <button class="btn ghost block" onclick="payFlagship('full')" data-i18n="c_t3_btn">Выбрать Полный</button>
+        <button class="btn ghost sm block" style="margin-top:8px" onclick="cartAddUi(this,'full')" data-i18n="cart_add">В корзину</button>
       </div>
     </div>
     <p class="muted" style="margin-top:20px; font-size:15px; max-width:640px" data-i18n="c_anchor">Для сравнения: индивидуальный разбор со мной стоит €200 за час. В Базовом тарифе — та же система, разложенная по дням на месяц.</p>
@@ -132,6 +135,11 @@
 
 <script src="app.js"></script>
 <script>
+function cartAddUi(btn, id) {
+  cartAdd(id);
+  btn.textContent = lang === "ua" ? UA.cart_added : "В корзине ✓";
+}
+
 /* точечные программы: флип-карточки; данные = витрина COURSES (цены сверены 2026-07-30, ферритин €16 по чекауту) */
 const MINI = {
   ru: [
@@ -179,7 +187,10 @@ function renderMini() {
     if (c.pay) {
       const b = document.createElement("button"); b.className = "btn sm"; b.textContent = t.buy + " →";
       b.addEventListener("click", function () { openPay(PAY[c.pay], c.pay); });
-      back.append(b);
+      const b2 = document.createElement("button"); b2.className = "btn ghost sm on-dark"; b2.style.marginLeft = "8px";
+      b2.textContent = lang === "ua" ? UA.cart_add : "В корзину";
+      b2.addEventListener("click", function () { cartAddUi(b2, c.pay); });
+      back.append(b, b2);
     } else {
       const a = document.createElement("a"); a.className = "btn ghost sm on-dark"; a.textContent = t.inbot + " →";
       a.href = BOT_URL; a.target = "_blank"; a.rel = "noopener";

@@ -117,13 +117,32 @@ const UA = {
   k_demo_note: "Це демо-режим: відмічайте дні та дивіться, як росте прогрес. У реальному кабінеті уроки відкриваються по одному на день.",
   k_l1: "Сон: фундамент відновлення", k_l2: "Дихання, що знімає напругу", k_l3: "Харчування: перші заміни", k_l4: "Догляд: ранковий протокол", k_l5: "Дихання і лімфа",
   k_lock: "відкриється завтра", k_lock_st: "зачинено",
-  k_done: "пройдено", k_todo: "відмітити",
+  k_done: "пройдено", k_todo: "практику не здано",
   k_hw_b: "Практика дня",
   k_hw: "3 запитання до себе: що я помітила сьогодні? що далося легко? що візьму із собою на завтра?",
   k_q_h: "Питання під час курсу",
   k_q_p: "На Базовому й Повному тарифах ви ставите запитання у групі курсу — я відповідаю особисто.",
   k_buy_h2: "Кабінет відкривається з курсом",
   k_buy_btn: "Обрати тариф",
+  p_prof_h: "Профіль",
+  p_hi: "Вітаю", p_name_l: "Як до вас звертатися?", p_save: "Зберегти",
+  p_курс_h: "Мої курси",
+  p_my_h: "Мої курси",
+  p_demo_tag: "Демо-доступ",
+  p_code_l: "Код доступу з Telegram",
+  p_code_btn: "Активувати",
+  p_code_note: "Коди доступу запрацюють із запуском кабінету. Зараз куплені курси приходять у Telegram — якщо оплатили й нічого не прийшло, напишіть у бот.",
+  p_hw_h: "Практика дня",
+  p_hw_q1: "Що я помітила сьогодні?", p_hw_q2: "Що далося легко?", p_hw_q3: "Що візьму із собою на завтра?",
+  p_hw_send: "Здати практику",
+  p_hw_note: "День зараховується після зданої практики — не за перегляд.",
+  p_hw_done: "Практику здано — день зараховано!",
+  p_cart_h: "Кошик",
+  p_cart_empty: "Кошик порожній. Додайте курс на сторінці «Курси».",
+  p_cart_pay: "Оплатити", p_cart_del: "Прибрати",
+  p_cart_note: "Кожен курс оплачується окремою захищеною сторінкою WayForPay.",
+  p_cart_sum: "Разом",
+  cart_added: "У кошику ✓", cart_add: "У кошик",
   /* Контакти */
   ct_eyebrow: "Контакти",
   ct_h1: 'Я поруч — <em class="acc">у месенджері</em>',
@@ -167,6 +186,33 @@ function toggleLang() {
   history.replaceState(null, "", u);
   applyLang();
   if (typeof onLangChange === "function") onLangChange();
+}
+
+/* ── корзина (localStorage) ── */
+const CART_ITEMS = {
+  trial: { ru: "Молодость изнутри · Пробный", ua: "Молодість зсередини · Пробний", price: 10 },
+  base: { ru: "Молодость изнутри · Базовый", ua: "Молодість зсередини · Базовий", price: 100 },
+  full: { ru: "Молодость изнутри · Полный", ua: "Молодість зсередини · Повний", price: 250 },
+  ferritin: { ru: "Ферритин: вернуть энергию", ua: "Феритин: повернути енергію", price: 16 },
+  fascia: { ru: "Фасціальний біль", ua: "Фасціальний біль", price: null, grn: 1000 },
+  social: { ru: "Соцсети для эксперта", ua: "Соцмережі для експерта", price: null },
+  book: { ru: "Книга «Склянка води»", ua: "Книга «Склянка води»", price: null },
+};
+function cartGet() { try { return JSON.parse(localStorage.getItem("cart") || "[]"); } catch (e) { return []; } }
+function cartSet(c) { try { localStorage.setItem("cart", JSON.stringify(c)); } catch (e) {} cartBadge(); }
+function cartAdd(id) {
+  const c = cartGet();
+  if (c.indexOf(id) === -1) { c.push(id); cartSet(c); track("site_cart_add", id); }
+  cartBadge();
+}
+function cartRemove(id) { cartSet(cartGet().filter(function (x) { return x !== id; })); }
+function cartBadge() {
+  const n = cartGet().length;
+  document.querySelectorAll(".nav-cab").forEach(function (a) {
+    let b = a.querySelector(".cart-n");
+    if (!b) { b = document.createElement("span"); b.className = "cart-n"; a.appendChild(b); }
+    b.textContent = n ? " · " + n : "";
+  });
 }
 
 /* мобильное меню */
@@ -213,7 +259,7 @@ function cabInit() {
       const isDone = done.indexOf(d) !== -1;
       li.classList.toggle("done", isDone);
       if (st && !li.classList.contains("lock")) {
-        st.textContent = isDone ? (lang === "ua" ? UA.k_done : "пройдено") : (lang === "ua" ? UA.k_todo : "отметить");
+        st.textContent = isDone ? (lang === "ua" ? UA.k_done : "пройдено") : (lang === "ua" ? UA.k_todo : "практика не сдана");
       }
     });
     const total = 30;
@@ -228,15 +274,14 @@ function cabInit() {
       dayLbl.textContent = (lang === "ua" ? "День " + n + " із 30" : "День " + n + " из 30");
     }
   }
-  list.addEventListener("click", function (e) {
-    const li = e.target.closest("li[data-day]");
-    if (!li || li.classList.contains("lock")) return;
-    const d = li.dataset.day;
-    const i = done.indexOf(d);
-    if (i === -1) done.push(d); else done.splice(i, 1);
+  /* день засчитывается ТОЛЬКО сдачей практики (см. hwSubmit), клики по списку день не отмечают */
+  window.cabMarkNext = function () {
+    const next = String(Math.min(30, done.length + 1));
+    if (done.indexOf(next) === -1) done.push(next);
     try { localStorage.setItem("cab_demo", JSON.stringify(done)); } catch (e2) {}
     render();
-  });
+    return done.length;
+  };
   window.cabRender = render;
   render();
 }
