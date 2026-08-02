@@ -326,3 +326,35 @@ footer li { padding: 4px 0; }
 .cart-row .pr { font-family: var(--serif); font-weight: 700; white-space: nowrap; }
 .cart-row .rm { background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: 13px; text-decoration: underline; }
 .tag-demo { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; background: var(--paper-2); border: 1px solid var(--gold); border-radius: 8px; padding: 3px 8px; color: var(--ink-soft); }
+
+/* ── сигнатура: пометка врача на бланке ── */
+.blank { position: relative; overflow: visible; }
+.mark-val { position: relative; display: inline-block; }
+.mark-val::after {
+  content: ""; position: absolute; inset: -7px -12px;
+  border: 2.5px solid var(--gold); border-radius: 50%;
+  transform: rotate(-4deg); pointer-events: none;
+}
+.blank-note {
+  font-family: var(--serif); font-style: italic; font-size: 15px;
+  color: var(--accent); margin-top: 12px; padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
+.blank-note b { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: .1em; color: var(--ink-soft); }
+.hero-full .inner { text-shadow: 0 1px 22px rgba(28,26,23,.45); }
+.hero-full .btn { text-shadow: none; }
+
+/* ── CRO: кому подходит + доверие у оплаты ── */
+.fit { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 26px 0 8px; }
+@media (min-width: 640px) { .fit { grid-template-columns: 1fr 1fr; } }
+.fit .col { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+.fit h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.fit ul { list-style: none; }
+.fit li { padding: 5px 0 5px 26px; position: relative; font-size: 15px; }
+.fit .yes li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.fit .no li::before { content: "—"; position: absolute; left: 0; color: var(--ink-soft); }
+.trust-strip {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-soft); margin: 6px 0 4px;
+}
+.pay-note { font-size: 12.5px; color: var(--ink-soft); text-align: center; margin-top: 8px; }
