@@ -153,20 +153,24 @@ nav.main a.nav-cab:hover { background: var(--accent); color: #211c15; border-col
   outline: 3px solid var(--accent); outline-offset: 2px;
 }
 
-/* ── hero главной: атмосферный кадр во весь экран ── */
-.hero-full { position: relative; min-height: 86svh; display: flex; align-items: flex-end; overflow: hidden; }
-.hero-full img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 20%; }
-@media (max-width: 719px) { .hero-full img.bg { object-position: 35% 12%; } }
-@media (max-width: 919px) {
-  .hero-full::after {
-    background: linear-gradient(90deg, rgba(28,26,23,.55), rgba(28,26,23,.08) 70%),
-                linear-gradient(200deg, rgba(28,26,23,.05) 22%, rgba(28,26,23,.78) 80%);
-  }
+/* ── hero главной: «жидкое золото» ── */
+.hero-full {
+  position: relative; min-height: 86svh; display: flex; align-items: flex-end; overflow: hidden;
+  background:
+    radial-gradient(58vw 42vw at 78% 14%, rgba(212,175,55,.26), transparent 62%),
+    radial-gradient(44vw 36vw at 8% 86%, rgba(150,98,26,.30), transparent 66%),
+    radial-gradient(80vw 54vw at 50% 112%, rgba(227,193,92,.14), transparent 62%),
+    var(--deep);
+}
+.hero-full::before {
+  content: ""; position: absolute; width: 52vw; height: 52vw; min-width: 380px; min-height: 380px;
+  right: -10vw; top: -16vw; border: 1px solid rgba(212,175,55,.35); border-radius: 50%;
+  pointer-events: none;
 }
 .hero-full::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(28,26,23,.5), rgba(28,26,23,0) 62%),
-              linear-gradient(200deg, rgba(28,26,23,0) 30%, rgba(28,26,23,.66) 82%);
+  content: ""; position: absolute; width: 52vw; height: 52vw; min-width: 380px; min-height: 380px;
+  right: -6vw; top: -10vw; border: 1px solid rgba(212,175,55,.15); border-radius: 50%;
+  pointer-events: none;
 }
 .hero-full .inner { position: relative; z-index: 2; color: #f3ede1; padding: 56px 20px 60px; width: 100%; }
 .hero-full .eyebrow { color: #f3ede1; opacity: .85; }
