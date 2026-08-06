@@ -202,6 +202,21 @@ function applyLang() {
     t.textContent = lang === "ua" ? "RU" : "UA";
   });
 }
+function applyThemeIcon() {
+  const dark = document.documentElement.dataset.theme === "dark";
+  document.querySelectorAll(".theme-t").forEach(function (b) {
+    b.textContent = dark ? "\u2600" : "\u263E";
+    b.setAttribute("aria-label", dark ? "Светлая тема" : "Тёмная тема");
+  });
+}
+function toggleTheme() {
+  const r = document.documentElement;
+  const next = r.dataset.theme === "dark" ? "light" : "dark";
+  r.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (e) {}
+  applyThemeIcon();
+  track("site_theme_" + next);
+}
 function toggleLang() {
   lang = lang === "ua" ? "ru" : "ua";
   const u = new URL(location.href);
@@ -227,6 +242,7 @@ function cartAdd(id) {
   const c = cartGet();
   if (c.indexOf(id) === -1) { c.push(id); cartSet(c); track("site_cart_add", id); }
   cartBadge();
+  applyThemeIcon();
 }
 function cartRemove(id) { cartSet(cartGet().filter(function (x) { return x !== id; })); }
 function cartBadge() {

@@ -13,6 +13,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="img/favicon.png">
 <link rel="preload" href="fonts/playfair-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/playfair-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var _t=localStorage.getItem("theme");if(_t){document.documentElement.dataset.theme=_t}else if(matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.dataset.theme="dark"}}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="contacts">
@@ -26,6 +27,7 @@
     <a class="here" data-keep-lang data-i18n="nav_contacts" href="contacts.html">Контакты</a>
   </nav>
   <div class="top-cta">
+    <button class="theme-t" onclick="toggleTheme()" aria-label="Тема">☾</button>
     <button class="lang-t" id="lang-t" onclick="toggleLang()">UA</button>
     <a class="btn sm" data-keep-lang data-i18n="nav_buy" href="courses.html#tariffs">Купить курс</a>
     <button class="burger" onclick="openSheet()" aria-label="Меню"><i></i><i></i><i></i></button>
@@ -34,6 +36,7 @@
 <div class="sheet" id="sheet">
   <button class="close" onclick="closeSheet()" aria-label="Закрыть">×</button>
   <button class="lang-t" onclick="toggleLang()">UA</button>
+  <button class="theme-t" onclick="toggleTheme()" aria-label="Тема">☾</button>
   <a class="nav-cab" data-keep-lang data-i18n="nav_cabinet" href="cabinet.html">Кабинет</a>
   <a data-keep-lang data-i18n="nav_courses" href="courses.html">Курсы</a>
   <a data-keep-lang data-i18n="nav_about" href="about.html">Обо мне</a>

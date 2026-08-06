@@ -385,3 +385,40 @@ footer li { padding: 4px 0; }
 }
 .r-name { font-weight: 600; font-size: 15px; }
 .r-tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; margin-left: auto; }
+
+/* ══ тема «вечер»: тёмный люкс (переключатель ☾/☀) ══ */
+:root[data-theme="dark"] {
+  --paper: #141210; --paper-2: #1c1915; --card: #201c17;
+  --ink: #f3ede1; --ink-soft: #b5ac9c;
+  --accent: #d4af37; --accent-ink: #b8912e; --gold-l: #e3c15c;
+  --line: rgba(212,175,55,.22);
+}
+:root[data-theme="dark"] .hero-full {
+  background:
+    radial-gradient(58vw 42vw at 78% 14%, rgba(212,175,55,.26), transparent 62%),
+    radial-gradient(44vw 36vw at 8% 86%, rgba(150,98,26,.30), transparent 66%),
+    radial-gradient(80vw 54vw at 50% 112%, rgba(227,193,92,.14), transparent 62%),
+    var(--deep);
+}
+:root[data-theme="dark"] .hero-full::before { border-color: rgba(212,175,55,.35); }
+:root[data-theme="dark"] .hero-full::after { border-color: rgba(212,175,55,.15); }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  :root[data-theme="dark"] h1 em.acc, :root[data-theme="dark"] h2 em.acc {
+    background: linear-gradient(105deg, #e8c766 12%, #b28a1e 46%, #f0d78a 86%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+}
+:root[data-theme="dark"] .blank { box-shadow: 0 28px 90px rgba(0,0,0,.55); }
+:root[data-theme="dark"] .tariff.featured { box-shadow: 0 0 60px rgba(212,175,55,.16); }
+:root[data-theme="dark"] .lk-card input[type=text],
+:root[data-theme="dark"] .hw-form textarea,
+:root[data-theme="dark"] .day-list li:not(.lock) .st { border-color: rgba(212,175,55,.6); }
+:root[data-theme="dark"] .prog { background: #2a251e; }
+:root[data-theme="dark"] body::after { opacity: .05; }
+.theme-t {
+  font-family: var(--mono); font-size: 14px; cursor: pointer; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); border-radius: 999px; padding: 7px 12px; line-height: 1;
+}
+.theme-t:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 559px) { .top .theme-t { display: none; } }
