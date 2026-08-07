@@ -31,7 +31,6 @@ function openPay(url, id) { track("site_pay_" + id); window.open(url, "_blank", 
 const UA = {
   nav_courses: "Курси", nav_about: "Про мене", nav_cabinet: "Кабінет", nav_contacts: "Контакти",
   nav_buy: "Купити курс",
-  brand_sub: "лікар anti-age медицини",
   /* Головна */
   h_eyebrow: "Косметолог · лікар-невролог · 20 років практики",
   h_h1: 'Аналізи <em class="acc">не брешуть</em>',
@@ -72,7 +71,7 @@ const UA = {
   faq4_q: "Залишилися запитання?",
   faq4_a: "Напишіть у бот — я або моя команда відповімо.",
   f_note: "Оплата проходить через захищену сторінку WayForPay. Курси не замінюють консультацію вашого лікаря.",
-  f_nav: "Розділи", f_soc: "Соцмережі",
+  f_nav: "Розділи", f_soc: "Соцмережі", f_sign: "Бережіть себе 💙",
   /* Курси */
   c_eyebrow: "Курси",
   c_h1: 'Обрати <em class="acc">свій</em> курс',
